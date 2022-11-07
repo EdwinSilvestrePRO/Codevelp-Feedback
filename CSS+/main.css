@@ -1,0 +1,11 @@
+@import './started.css' all;
+/* quitando la barra de scroll cuando se inicia la aplicacion */
+html[data-start]::-webkit-scrollbar {
+    display: none;
+}
+
+body, html {
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}

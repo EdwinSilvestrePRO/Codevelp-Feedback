@@ -1,0 +1,123 @@
+/* the styles of theme light */
+body.light {
+    background-color: white;
+}
+
+body.dark {
+    background-color: black;
+}
+
+body.start {
+    width:auto;
+    height:100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+canvas.loader {
+    opacity: 0;
+    order:0;
+    align-self: center;
+    justify-self: center;
+    background-color:transparent;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+canvas.loader.visible {
+    transition: 800ms opacity ease;
+    opacity: 1;    
+}
+
+form[data-register] {
+    background-color: rgba(0, 0, 0, 0.733);
+    position:fixed;
+    width:100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+form.asyncVisible {
+    opacity:1;
+    transition: 0.8s opacity linear;
+}
+
+form {
+    opacity:0;
+}
+
+form[data-register] fieldset.register {
+    background-color: purple;
+    border: 4px double yellow;
+    order: 0;
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex-basis: auto;
+    
+}
+form[data-register] fieldset.register legend {
+    text-align: center;
+    color: white;
+    font: lighter 2em serif;
+}
+form[data-register] fieldset.register label {
+    color: white;
+    font: bold 2em monospace;
+    display:block;
+    padding: 3px;
+}
+form[data-register] fieldset.register input {
+    font:bold 1.5em monospace;
+    background-color: rgba(255, 255, 255, 0.596);
+    text-indent: 5px;
+    color: yellow;
+    outline:none;
+    border: none;
+    border-radius: 1em;
+    cursor: text;
+}
+form[data-register] fieldset.register input[type="submit"] {
+    font:bold 1.8em monospace;
+    background-color: yellow;
+    color: black;
+    cursor: pointer;
+    transition: 600ms all ease;
+}
+form[data-register] fieldset.register input[type="submit"]:hover {
+    background-color:green;
+    color: white;
+}
+form[data-register] fieldset.register input[type="submit"].notSend:hover {
+    background-color: red;
+    color: white;
+}
+
+form[data-register] fieldset.register input.invalid {
+    border: 2px solid rgb(255, 0, 0);
+    background-color: red;
+    color: white;
+}
+form[data-register] fieldset.register input::placeholder {
+    color: red;
+}
+form[data-register] fieldset.register input.invalid::placeholder {
+    color:transparent;
+
+}
+form[data-register] fieldset.register div {
+    display:flex;
+    height:auto;
+    padding: 0px;
+    flex-flow:row wrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+    /* align-items: */
+}

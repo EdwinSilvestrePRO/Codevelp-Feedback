@@ -1,0 +1,10 @@
+[
+    {
+    "keyName" : "@User",
+    "properties": {
+        "theme": "light",
+        "name": "user-name",
+        "email": "user-email"
+    }
+    }
+]

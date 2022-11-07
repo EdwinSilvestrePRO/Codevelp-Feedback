@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-start>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +11,31 @@
     <meta name="end-tyme" content="?"/>
     <title>Feedback_Yourself</title>
     <link rel="icon" href="./testing/icon.png">
+    <link rel="stylesheet" href="./CSS+/main.css">
 </head>
-<body>
+<body class="start light">
+    <canvas width="300" height="295" class="loader"></canvas>
+
+    <template id="theRegister">
+        
+        <form action="none..." method="get" data-register id="" class="">
+            <fieldset class="register">
+                <legend>Registro:</legend>
+                <div class="btSubmit">
+                    <input type="submit" class="notSend" name="sendInformation" id="send">
+                </div>
+                <label for="name">Nombre y apellido:</label>
     
+                <input type="text" placeholder="Nombres" class="" name="name" id="name" class="">
+    
+                <label for="email">Correo Electronico:</label>
+    
+                <input type="email" placeholder="codevelp@codevelp.com" name="email" id="email" class="">
+    
+            </fieldset>
+        </form>
+
+    </template>
+    <script type="module" src="./app.js"></script>
 </body>
 </html>
