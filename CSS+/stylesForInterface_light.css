@@ -1,0 +1,23 @@
+body.light header.appName {
+    background-color: transparent;
+    display:grid;
+    height: 54px;
+    grid-template-columns: 52px 200px;
+    grid-template-rows: 52px;
+    grid-auto-flow: row;
+    column-gap: 2px;
+    row-gap: auto;
+    align-content: start;
+    align-items: center;
+    justify-content: var(--position-MarkX);
+}
+body.light header.appName h1 {
+    margin:0px;
+    width: max-content;
+    visibility: hidden;
+    font: lighter 1.6em monospace;
+    transition: 500ms visibility linear;
+}
+body.light header.appName:hover h1 {
+    visibility: visible;
+}

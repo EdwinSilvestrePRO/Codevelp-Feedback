@@ -1,5 +1,6 @@
 import Register from './ES+/register.js'
-
+import GraphyInterface from './ES+/graphyInterfaceInteractive.js';
+import FeedbackImage from './ES+/images.js';
 class StartFeedback {
     canvas = document.querySelector("canvas.loader");
     static op = {
@@ -31,8 +32,22 @@ class StartFeedback {
 
         requestAnimationFrame((handler)=> {
             if(rectX == 200) {
-                let {name, email} = JSON.parse(localStorage.getItem("@User"));
-                console.log(`you start is finished ${name} with email: ${email}`);
+                // ejecutando acciones asincronas...
+                Register.ActionAsync(2000)
+                .then(()=> {
+                    this.canvas.classList.remove("visible");
+                    return Register.ActionAsync(1000);
+                })
+                .then (()=> {
+                    document.body.classList.remove("start");
+                    document.body.parentElement.removeAttribute("data-start");
+                    this.canvas.parentElement.removeChild(this.canvas);
+
+                    document.dispatchEvent(new Event("finishLoader"));
+                })
+                // debug errors or warns...
+                .catch(console.warn);
+
                 return cancelAnimationFrame(handler);
             } else if (rectX == 165 && localStorage.getItem("@User") == null) document.dispatchEvent(new Event("register"));
             else {
@@ -97,6 +112,8 @@ class StartFeedback {
 
 // agregando el evento y el metodo la cual va a llamar...
 
+window
+.addEventListener("DOMContentLoaded", FeedbackImage.setIcon);
 window
 .addEventListener("DOMContentLoaded", StartFeedback.Main, StartFeedback.op);
 

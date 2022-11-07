@@ -1,4 +1,6 @@
 @import './started.css' all;
+@import './stylesForInterface_light.css' all;
+@import './stylesForInterface_dark.css' all;
 /* quitando la barra de scroll cuando se inicia la aplicacion */
 html[data-start]::-webkit-scrollbar {
     display: none;

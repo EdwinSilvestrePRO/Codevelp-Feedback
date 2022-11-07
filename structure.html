@@ -10,12 +10,21 @@
     <meta name="start-tyme" content="Fri November 04, 2022 09:36:08"/>
     <meta name="end-tyme" content="?"/>
     <title>Feedback_Yourself</title>
-    <link rel="icon" href="./testing/icon.png">
+    <style>
+        :root {
+            --position-MarkX: start;
+        }
+    </style>
+    <link rel="icon" id="iconApp" href="">
     <link rel="stylesheet" href="./CSS+/main.css">
 </head>
 <body class="start light">
+    <!-- capitulo 1: Es la entrada constituido por el elemento canvas.loader -->
     <canvas width="300" height="295" class="loader"></canvas>
-
+    
+    
+    <!-- capitulo 2: Comprueba si hay que hacer un registo del nombre y correo del usuario de la  
+         aplicacion y se ejecuta si no esta registrado, constituido por los elementos de template#theRegister -->
     <template id="theRegister">
         
         <form action="none..." method="get" data-register id="" class="">
@@ -29,13 +38,23 @@
                 <input type="text" placeholder="Nombres" class="" name="name" id="name" class="">
     
                 <label for="email">Correo Electronico:</label>
-    
+                
                 <input type="email" placeholder="codevelp@codevelp.com" name="email" id="email" class="">
     
             </fieldset>
         </form>
-
+        
     </template>
+
+    <!-- capitulo 3: Es aqui que hace su principal funcion para que se retroalimente el usuario con el tema que le parezca mejor -->
+    <template id="interfaceForApp">
+        <header class="">
+            <img alt="icon for app" width="50" height="40" id="iconForApp">
+            <h1>Feedback</h1> 
+        </header>
+        
+    </template>
+
     <script type="module" src="./app.js"></script>
 </body>
 </html>
