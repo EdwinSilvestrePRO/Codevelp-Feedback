@@ -34,12 +34,17 @@ export default class FeedbackImage extends Register {
     }();
 
     // icon for application FeedBack.
-    static iconURL = function(){
-        const $canvas = document.createElement("canvas");
+    static iconURL = function(isForInterface){
+        const $canvas = document.createElement("canvas"), user = localStorage.getItem("@User");
+        let color = "";
+        if(isForInterface && user) {
+            let {theme} = JSON.parse(user);
+            color = theme == "light"? "black" : "yellow";
+        } else color = "black";
         $canvas.width = 100;
         $canvas.height = 60;
         let context = $canvas.getContext('2d');
-        context.strokeStyle = "black";
+        context.strokeStyle = color;
         context.fillStyle = "transparent";
         context.lineCap = "round";
         context.lineJoin= "round";
@@ -54,10 +59,10 @@ export default class FeedbackImage extends Register {
         context.stroke();
 
         return $canvas.toDataURL("png");
-    }();
+    };
     static async setIcon() {
         const $linkIcon = document.getElementById("iconApp");
-        $linkIcon.href = FeedbackImage.iconURL;
+        $linkIcon.href = FeedbackImage.iconURL(false);
         
         await FeedbackImage.ActionAsync(2000);
         document.title = "FeedBack";

@@ -8,8 +8,9 @@ export default class Register {
             setTimeout(()=> res(current), [1000, 2000, 3000][current]);
         });
     }
-
+    
     static ActionAsync(timeForAll) {
+
         return new Promise(function(res, reject){
             setTimeout(()=> res(), timeForAll);
         });

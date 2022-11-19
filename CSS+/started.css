@@ -6,7 +6,9 @@ body.light {
 body.dark {
     background-color: black;
 }
-
+body img#iconForApp {
+    cursor: pointer;
+}
 body.start {
     width:auto;
     height:100vh;

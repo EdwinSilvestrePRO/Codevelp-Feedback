@@ -15,9 +15,156 @@ body.light header.appName h1 {
     margin:0px;
     width: max-content;
     visibility: hidden;
+    color: black;
     font: lighter 1.6em monospace;
     transition: 500ms visibility linear;
 }
 body.light header.appName:hover h1 {
     visibility: visible;
+}
+
+/*Para dispositivos pequeños es necesario 520px como maximo*/
+@media all and (max-width: 520px) {
+    body.light main#allContent {
+        background-color: transparent;
+        width:100vw;
+        height: auto;
+        min-height: calc(100vh - 56px);
+    }
+    body.light main#allContent div.trackButton {
+        background-color: transparent;
+        z-index:2;
+        position: fixed;
+        width: 55px;
+        height: calc(100vh - 56px);
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        align-items: var(--position-buttonY);
+    }
+    body.light main#allContent div.trackButton button {
+        background-color: var(--background-text-H);
+        width:30px;
+        height: 40px;
+        cursor: pointer;
+        clip-path: polygon(
+            0px 0px,
+            28px 20px,
+            0px 40px
+            );
+            transition: 460ms background-color linear;
+        }
+    body.light main#allContent div.trackButton button:hover {
+        background-color: orange;
+    }
+    
+    body.light main#allContent article.content {
+        border: 1px solid transparent;
+    }
+    body.light main#allContent article.content header.ideal {
+        color: var(--color-text-H);
+        background-color: var(--background-text-H);
+        font:bold var(--font-size-text-H) var(--font-text-family);
+        font-style: var(--font-style-H);
+        margin:1px 0px 0px 56px;
+        text-align: var(--text-align-H);
+        border-radius: 4px;
+        text-decoration-line: var(--text-decoration-line-H);
+        text-decoration-color: var(--text-decoration-color-H);
+    }
+    body.light main#allContent article.content div.box-content {
+        margin:1px 0px 0px 56px;
+        width: auto;
+        filter: blur(0px);
+        transition: 255ms filter ease;
+    }
+    body.light main#allContent article.content.blur {
+        filter: blur(2px);
+    }
+    body.light main#allContent article.content div.box-content canvas.diapositive {
+        display: block;
+        margin: auto;
+    }
+    body.light main#allContent article.content div.box-content p {
+        padding: 20px;
+        border-radius: 1em; 
+        background-color: var(--background-text-C);
+        color: var(--color-text-C);
+        font:bold var(--font-size-C) var(--font-family-C);
+        text-align: var(--text-align-C);
+    }
+    body.light main#allContent section.menu {
+        z-index: 33;
+        background-color: var(--background-text-H);
+        border-radius: 0px;
+        border-top-right-radius: 1em;
+        width: 55vw;
+        height: calc(100vh - 56px);
+        position: fixed;
+        top:56px;
+        left:0px;
+        right: auto;
+        bottom: auto;
+        transition: 255ms top linear;
+    }
+    body.light main#allContent section.menu.hidden {
+        top:calc(-100vh + 56px);
+    }
+    body.light main#allContent section.menu div.trackExit {
+        background-color: white;
+        color: red;
+        padding: 8px;
+        display: flex;
+        flex-flow: row-reverse wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    body.light main#allContent section.menu div.trackExit button.collapse {
+        background-color: white;
+        color: red;
+        border: none;
+        font-size: 2em;
+        cursor: pointer;
+    }
+    body.light main#allContent section.menu div.trackExit button.collapse:hover {
+        background-color: yellow;
+    }
+    body.light main#allContent section.menu div.trackExit div.theme {
+        background-color: transparent;
+        color: black;
+        cursor: pointer;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-content: flex-start;
+    }
+    body.light main#allContent section.menu div.trackExit div.theme div.viewChange {
+        width:52px;
+        height: 20px;
+        background-color: #90d6ff;
+        border-radius: 1em;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    body.light main#allContent section.menu div.trackExit div.theme div.viewChange::before {
+        content: '';
+        background-color: black;
+        display:block;
+        width: 18px;
+        height: 18px;
+        border-radius: 1em;
+    }
+
+    body.light main#allContent section.menu div.trackExit div.theme input {
+        position: absolute;
+        opacity: 0;
+    }
+}
+
+@media all and (min-width:521px) {
+    body.light main#allContent {
+        background-color: red;
+    }
 }

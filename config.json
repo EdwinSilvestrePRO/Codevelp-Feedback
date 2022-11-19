@@ -4,7 +4,20 @@
     "properties": {
         "theme": "light",
         "name": "user-name",
-        "email": "user-email"
+        "email": "user-email",
+        "stylesofApp": {
+            "position-MarkX": "the position for logo application on graphyc interface",
+            "position-buttonY":"is position for menu button",
+            
+            "color-text-H:white": "color-text",
+            "background-text-H": "#444",
+            "font-size-text-H": "1em",
+            "font-style-H": "normal",
+            "text-decoration-line-H": "none",
+            "text-decoration-color-H": "red",
+            "font-text-family": "normal",
+            "text-align-H": "center"
+        }
     }
     }
 ]

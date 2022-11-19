@@ -11,14 +11,35 @@
     <meta name="end-tyme" content="?"/>
     <title>Feedback_Yourself</title>
     <style>
+        /* default styles */
         :root {
             --position-MarkX: start;
+            --position-buttonY: flex-start;
+            /* styles for descriptive bar*/
+            --color-text-H:white;
+            --background-text-H: #444;
+            --font-size-text-H: 1em;
+            --font-style-H: normal;
+            --text-decoration-line-H: none;
+            --text-decoration-color-H: red;
+            --font-text-family: normal;
+            --text-align-H: center;
+            /* styles for texts */
+            --color-text-C: black;
+            --background-text-C: yellow;
+            --font-size-C: 1em;
+            --font-style-C: normal;
+            --font-family-C: "times new roman";
+            --text-align-C: center;
+
         }
     </style>
+    <style id="post-newStyles"></style>
+
     <link rel="icon" id="iconApp" href="">
     <link rel="stylesheet" href="./CSS+/main.css">
 </head>
-<body class="start light">
+<body class="start">
     <!-- capitulo 1: Es la entrada constituido por el elemento canvas.loader -->
     <canvas width="300" height="295" class="loader"></canvas>
     
@@ -52,9 +73,39 @@
             <img alt="icon for app" width="50" height="40" id="iconForApp">
             <h1>Feedback</h1> 
         </header>
-        
-    </template>
+        <main id="allContent">
+            <div class="trackButton">
+                <button id="collapse-menu"></button>
+            </div>
+            <section class="menu hidden" id="central-panel">
+                <div class="trackExit">
+                    <button class="collapse" id="collapse">x</button>
 
+                    <div class="theme">
+                        <input type="checkbox" id="theme">Theme: 
+                        <div class="viewChange post"></div>
+                    </div>
+
+                </div>
+                <ol>
+                    <li class="item actual">Home</li>
+                    <li class="item">Learn</li>
+                    <li class="item">Account and Setting</li>
+                    <li class="item">About (¡)</li>
+                </ol>
+            </section>
+            <article class="content" id="articleContent" data-active="true">
+                <header class="ideal">
+                    <h2>Home</h2>
+                </header>
+                <div class="box-content">
+                    <p id="date-normal">loading...</p>
+                    <canvas class="diapositive" width="240" height="300" id="view-op"></canvas>
+                </div>
+            </article>
+        </main>
+    </template>
+    <div class="chConfig" id="viewRunnCongif">change config</div>
     <script type="module" src="./app.js"></script>
 </body>
 </html>

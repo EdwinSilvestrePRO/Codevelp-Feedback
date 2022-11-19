@@ -11,3 +11,20 @@ body, html {
     padding:0px;
     box-sizing: border-box;
 }
+div.chConfig {
+    position: fixed;
+    z-index: 44;
+    bottom: 0px;
+    left: 0px;
+    width: calc(100vw - 8px);
+    padding: 8px;
+    font: bolder 1.2em monospace;
+    background-color: #444;
+    color: white;
+    text-align: center;
+    visibility: hidden;
+}
+
+div.chConfig.visible {
+    visibility: visible;
+}

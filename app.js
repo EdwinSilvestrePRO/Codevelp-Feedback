@@ -1,7 +1,10 @@
 import Register from './ES+/register.js'
 import GraphyInterface from './ES+/graphyInterfaceInteractive.js';
 import FeedbackImage from './ES+/images.js';
+import MenuBar from './ES+/menu.js';
+import AppConfig from './ES+/config.js';
 class StartFeedback {
+    #isPresent = ()=> sessionStorage.getItem("@instance");
     canvas = document.querySelector("canvas.loader");
     static op = {
         once : false,
@@ -15,11 +18,16 @@ class StartFeedback {
         reg.setInterface();
     }
     static Main(eventObject) {
-        const started = new StartFeedback();
         // the request for user...
-        let User = localStorage.getItem("@User") !== null;
+        let User = localStorage.getItem("@User");
+        if(User) {
+            let {theme} = JSON.parse(User);
+            document.body.classList.add(theme);
 
-        started.entrace(User, localStorage.getItem("@User"));
+        }
+        const started = new StartFeedback();
+
+        started.entrace(User !== null, User);
     }
     loader (context, properties, rectX) {
         // context.beginPath();
@@ -108,6 +116,24 @@ class StartFeedback {
             }, 1000);
         }, 1500);
     }
+    Authentication (ev) {
+        if(this.#isPresent()) {
+            document.body.parentElement.removeAttribute("data-start");
+            document.body.classList.remove("start");
+            let canvas = document.querySelector("canvas.loader");
+            if(canvas) canvas.parentElement.removeChild(canvas);
+
+            let user = localStorage.getItem("@User"), className = "light";
+            if(user) {
+                let {theme} = JSON.parse(user);
+                 className = theme;
+            }
+            else className = className;
+            document.body.classList.add(className);
+            return document.dispatchEvent(new Event("finishLoader"));
+        }
+        else StartFeedback.Main(ev);
+    }
 }
 
 // agregando el evento y el metodo la cual va a llamar...
@@ -115,7 +141,22 @@ class StartFeedback {
 window
 .addEventListener("DOMContentLoaded", FeedbackImage.setIcon);
 window
-.addEventListener("DOMContentLoaded", StartFeedback.Main, StartFeedback.op);
+.addEventListener("DOMContentLoaded", function(){ 
+    return new StartFeedback().Authentication();
+}, StartFeedback.op);
 
 document
 .addEventListener("register", StartFeedback.CallRegister, StartFeedback.op);
+
+document.addEventListener("click", function Handler(EVENT){
+    if(EVENT.target.matches("div.trackButton #collapse-menu") || EVENT.target.matches("div.trackExit #collapse")) {
+        let Actions = new MenuBar(document.getElementById("central-panel"), document.getElementById("allContent"), document.getElementById("articleContent"));
+
+        if(Actions.articleContent.dataset.active === "true") Actions.open(Actions.articleContent);
+        else Actions.close(Actions.articleContent);
+    }
+    else if (EVENT.target.parentElement.matches("div.theme")) {
+        let chTheme = new AppConfig("change theme for app: ", JSON.parse(localStorage.getItem("@User")).theme);
+        chTheme.changeTheme(); // url for iconInterface.
+    }
+});

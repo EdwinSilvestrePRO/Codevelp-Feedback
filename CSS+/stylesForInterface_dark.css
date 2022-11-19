@@ -1,0 +1,169 @@
+body.dark header.appName {
+    background-color: transparent;
+    display:grid;
+    height: 54px;
+    grid-template-columns: 52px 200px;
+    grid-template-rows: 52px;
+    grid-auto-flow: row;
+    column-gap: 2px;
+    row-gap: auto;
+    align-content: start;
+    align-items: center;
+    justify-content: var(--position-MarkX);
+}
+body.dark header.appName h1 {
+    margin:0px;
+    width: max-content;
+    visibility: hidden;
+    color: yellow;
+    font: darker 1.6em monospace;
+    transition: 500ms visibility linear;
+}
+body.dark header.appName:hover h1 {
+    visibility: visible;
+}
+/*Para dispositivos pequeños es necesario 520px como maximo*/
+@media all and (max-width: 520px) {
+    body.dark main#allContent {
+        background-color: transparent;
+        width:100vw;
+        height: auto;
+        min-height: calc(100vh - 56px);
+    }
+    body.dark main#allContent div.trackButton {
+        background-color: transparent;
+        z-index:2;
+        position: fixed;
+        width: 55px;
+        height: calc(100vh - 56px);
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        align-items: var(--position-buttonY);
+    }
+    body.dark main#allContent div.trackButton button {
+        background-color: var(--background-text-H);
+        width:30px;
+        height: 40px;
+        cursor: pointer;
+        clip-path: polygon(
+            0px 0px,
+            28px 20px,
+            0px 40px
+            );
+            transition: 460ms background-color linear;
+        }
+    body.dark main#allContent div.trackButton button:hover {
+        background-color: orange;
+    }
+    
+    body.dark main#allContent article.content {
+        border: 1px solid transparent;
+    }
+    body.dark main#allContent article.content header.ideal {
+        color: var(--color-text-H);
+        background-color: var(--background-text-H);
+        font:bold var(--font-size-text-H) var(--font-text-family);
+        font-style: var(--font-style-H);
+        margin:1px 0px 0px 56px;
+        text-align: var(--text-align-H);
+        border-radius: 4px;
+        text-decoration-line: var(--text-decoration-line-H);
+        text-decoration-color: var(--text-decoration-color-H);
+    }
+    body.dark main#allContent article.content div.box-content {
+        margin:1px 0px 0px 56px;
+        width: auto;
+        filter: blur(0px);
+        transition: 255ms filter ease;
+    }
+    body.dark main#allContent article.content.blur {
+        filter: blur(2px);
+    }
+    body.dark main#allContent article.content div.box-content canvas.diapositive {
+        display: block;
+        margin: auto;
+    }
+    body.dark main#allContent article.content div.box-content p {
+        padding: 20px;
+        border-radius: 1em; 
+        background-color: var(--background-text-C);
+        color: var(--color-text-C);
+        font:bold var(--font-size-C) var(--font-family-C);
+        text-align: var(--text-align-C);
+    }
+    body.dark main#allContent section.menu {
+        z-index: 33;
+        background-color: var(--background-text-H);
+        border-radius: 0px;
+        border-top-right-radius: 1em;
+        width: 55vw;
+        height: calc(100vh - 56px);
+        position: fixed;
+        top:56px;
+        left:0px;
+        right: auto;
+        bottom: auto;
+        transition: 255ms top linear;
+    }
+    body.dark main#allContent section.menu.hidden {
+        top:calc(-100vh + 56px);
+    }
+    body.dark main#allContent section.menu div.trackExit {
+        background-color: black;
+        color: red;
+        padding: 8px;
+        display: flex;
+        flex-flow: row-reverse wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    body.dark main#allContent section.menu div.trackExit button.collapse {
+        background-color: black;
+        color: red;
+        border: none;
+        font-size: 2em;
+        cursor: pointer;
+    }
+    body.dark main#allContent section.menu div.trackExit button.collapse:hover {
+        background-color: yellow;
+    }
+    body.dark main#allContent section.menu div.trackExit div.theme {
+        background-color: transparent;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-content: flex-start;
+    }
+    body.dark main#allContent section.menu div.trackExit div.theme div.viewChange {
+        width:52px;
+        height: 20px;
+        background-color: #444;
+        border-radius: 1em;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    body.dark main#allContent section.menu div.trackExit div.theme div.viewChange::before {
+        content: '';
+        background-color: white;
+        display:block;
+        width: 18px;
+        height: 18px;
+        border-radius: 1em;
+    }
+
+    body.dark main#allContent section.menu div.trackExit div.theme input {
+        position: absolute;
+        opacity: 0;
+    }
+}
+
+@media all and (min-width:521px) {
+    body.dark main#allContent {
+        background-color: red;
+    }
+}
