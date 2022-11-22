@@ -13,6 +13,10 @@
     <style>
         /* default styles */
         :root {
+            /* general style scroll-bar-color*/
+            --barScroll-color: blue;
+
+            /* styles for main interface... */
             --position-MarkX: start;
             --position-buttonY: flex-start;
             /* styles for descriptive bar*/
@@ -31,6 +35,10 @@
             --font-style-C: normal;
             --font-family-C: "times new roman";
             --text-align-C: center;
+
+            /* styles for menu */
+            --background-text-M: #8bff95;
+            --font-size-M: 1em;
 
         }
     </style>
@@ -69,42 +77,80 @@
 
     <!-- capitulo 3: Es aqui que hace su principal funcion para que se retroalimente el usuario con el tema que le parezca mejor -->
     <template id="interfaceForApp">
+        <img src="./testing/icon.png" alt="miniature of user" width="52" height="40" id="miniOfUser">
         <header class="">
             <img alt="icon for app" width="50" height="40" id="iconForApp">
-            <h1>Feedback</h1> 
+            <h1>Feedback</h1>
+
         </header>
         <main id="allContent">
             <div class="trackButton">
                 <button id="collapse-menu"></button>
             </div>
+
             <section class="menu hidden" id="central-panel">
                 <div class="trackExit">
                     <button class="collapse" id="collapse">x</button>
 
-                    <div class="theme">
-                        <input type="checkbox" id="theme">Theme: 
+                    <div class="theme" id="theme">
+                        <input type="checkbox">Theme: 
                         <div class="viewChange post"></div>
                     </div>
 
                 </div>
-                <ol>
-                    <li class="item actual">Home</li>
-                    <li class="item">Learn</li>
-                    <li class="item">Account and Setting</li>
-                    <li class="item">About (¡)</li>
-                </ol>
+
+                <nav>
+                    <ol class="options" id="options">
+
+                        <li class="item actual">Home</li>
+
+                        <li class="item">Learn</li>
+
+                        <li class="item">Account</li>
+
+                        <li class="item">Setting</li>
+                        
+                        <li class="item plataform"><a href="https://youtube.com/channel/UCDYYrr87_Kdnt5Dg1MaLFRQ" target="_blank">Codevelp</a></li>
+
+                        <li class="item">About</li>
+
+                    </ol>
+                </nav>
             </section>
+
             <article class="content" id="articleContent" data-active="true">
-                <header class="ideal">
+                <header class="ideal" id="descriptive-bar">
                     <h2>Home</h2>
                 </header>
-                <div class="box-content">
-                    <p id="date-normal">loading...</p>
+                <div class="box-content" id="boxContent">
+                    <p id="date-normal" class="date">loading...</p>
                     <canvas class="diapositive" width="240" height="300" id="view-op"></canvas>
                 </div>
             </article>
         </main>
     </template>
+
+    <template id="HOME">
+        <p id="date-normal" class="date">loading...</p>
+        <canvas class="diapositive" width="240" height="300" id="view-op"></canvas>
+    </template>
+
+    <template id="LEARN">
+        <p>LEARN</p>
+    </template>
+
+    <template id="ACCOUNT">
+        <p>Cuenta de usuario</p>
+    </template>
+
+    <template id="SETTING">
+        <p>SETTING</p>
+    </template>
+
+    <template id="ABOUT">
+        <p>ABOUT</p>
+    </template>
+
     <div class="chConfig" id="viewRunnCongif">change config</div>
     <script type="module" src="./app.js"></script>
 </body>

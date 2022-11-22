@@ -19,4 +19,26 @@ export default class MenuBar extends GraphyInterface {
 		presentContent.classList.remove("blur");
 		presentContent.dataset.active = "true";
 	}
+	selectOption(element, elementActual) {
+		let textUPC = element.textContent.toUpperCase();
+		
+		const boxContent = this.$main.querySelector("#boxContent"),
+		$descriptiveBar = this.$main.querySelector("#descriptive-bar h2"),
+		$selectTemp = document.getElementById(textUPC);
+		// stop...
+		window.cancelAnimationFrame(MenuBar.animActual);
+		clearInterval(MenuBar.intervalForDate);
+
+		// view change
+		elementActual.classList.remove("actual");
+
+		element.classList.add("actual");
+		
+		// clear boxContent and title for descriptive bar.
+		boxContent.innerHTML = "";
+
+		$descriptiveBar.textContent = element.textContent;
+
+		return this.MainProttected(textUPC, boxContent, $selectTemp);
+	}
 }

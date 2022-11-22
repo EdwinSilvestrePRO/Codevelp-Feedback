@@ -1,7 +1,9 @@
 import FeedbackImage from "./images.js";
+
 export default class GraphyInterface {
     static Diapositiva = new GraphyInterface();
     static animActual = 0;
+    static intervalForDate = 0;
     static rotationMain = 0;
     exit(ev) {
         try {
@@ -33,6 +35,10 @@ export default class GraphyInterface {
         .querySelector("img#iconForApp")
         .src = FeedbackImage.iconURL(true);
 
+        // $templateForApp.content
+        // .querySelector("img#miniOfUser")
+        // .src = FeedbackImage.iconURL(true);
+
         let $nodes = document.importNode($templateForApp.content, true);
         document.body.appendChild($nodes);
 
@@ -42,13 +48,63 @@ export default class GraphyInterface {
         .viewDate();
 
         
-        let interval = setInterval(GraphyInterface.Diapositiva.viewDate, 1000*60*60);
+        GraphyInterface.intervalForDate = setInterval(GraphyInterface.Diapositiva.viewDate, 1000*60*60);
+    }
+    MainProttected (descriptive, boxContent, templateForSet) {
+        if(descriptive == "HOME") {
+            let {content} = templateForSet,
+            
+            mainNode = document.importNode(content, true);
+            
+            boxContent.appendChild(mainNode);
+            
+            GraphyInterface
+            .Diapositiva
+            .AnimDiapositive()
+            .viewDate();
+            
+            GraphyInterface.intervalForDate = setInterval(GraphyInterface.Diapositiva.viewDate, 1000*60*60);
+            
+        }
+        else if (descriptive == "LEARN") {
+            let {content} = templateForSet,
+            
+            mainNode = document.importNode(content, true);
+            
+            boxContent.appendChild(mainNode);
+            
+        }
+        else if (descriptive == "ACCOUNT") {
+            let {content} = templateForSet,
+            
+            mainNode = document.importNode(content, true);
+            
+            boxContent.appendChild(mainNode);
+            
+        }
+        else if (descriptive == "SETTING") {
+            let {content} = templateForSet,
+            
+            mainNode = document.importNode(content, true);
+            
+            boxContent.appendChild(mainNode);
+            
+        }
+
+        else if (descriptive == "ABOUT") {
+            let {content} = templateForSet,
+            
+            mainNode = document.importNode(content, true);
+            
+            boxContent.appendChild(mainNode);
+            
+        }
     }
     AnimDiapositive() {
         const $diapositive = document.getElementById("view-op"),
         {width, height} = $diapositive, 
         ActualTimes = new Date(),
-        {name, isAnalogic} = JSON.parse(localStorage.getItem("@User"));
+        {isAnalogic} = JSON.parse(localStorage.getItem("@User"));
         let ctxGraphy = $diapositive.getContext("2d");
         ctxGraphy.fillStyle = `rgb(0, 0, ${ActualTimes.getSeconds()/60 * 255})`;
         ctxGraphy.lineWidth = 6;
@@ -60,10 +116,6 @@ export default class GraphyInterface {
 
             // the body for clock
             ctxGraphy.strokeStyle = "white";
-            ctxGraphy.fillStyle = "white";
-            ctxGraphy.font = "bold 20px monospace";
-            let measure = ctxGraphy.measureText(name);
-            ctxGraphy.fillText(name, width/2 - measure.width/2, 35);
             ctxGraphy.beginPath();
             ctxGraphy.moveTo(width/2+90, height/2);
             ctxGraphy.arc(width/2, height/2, 90, 0, Math.PI*2, true);
@@ -106,10 +158,7 @@ export default class GraphyInterface {
             hour = hourFormat24 > 12? hourFormat24-12 : hourFormat24,
             tm = hourFormat24 >= 12? "PM" : "AM";
 
-            ctxGraphy.fillStyle = "white";
-            ctxGraphy.font = "bold 20px monospace";
-            let measure = ctxGraphy.measureText(name);
-            ctxGraphy.fillText(name, width/2 - measure.width/2, 35);
+           
             ctxGraphy.save();
 
             ctxGraphy.strokeStyle = "white";
@@ -129,7 +178,7 @@ export default class GraphyInterface {
             ctxGraphy.restore();
             ctxGraphy.font = "bold 25px monospace";
             ctxGraphy.fillStyle = "white";
-            measure = ctxGraphy.measureText(`${hour}:${ActualTimes.getMinutes()}:${ActualTimes.getSeconds()}`);
+            let measure = ctxGraphy.measureText(`${hour}:${ActualTimes.getMinutes()}:${ActualTimes.getSeconds()}`);
             ctxGraphy.fillText(`${hour}:${ActualTimes.getMinutes()}:${ActualTimes.getSeconds()}`, width/2 - measure.width/2, height/2);
             ctxGraphy.font = "lighter 20px monospace";
             measure = ctxGraphy.measureText(tm);

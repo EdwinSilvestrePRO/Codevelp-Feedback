@@ -155,8 +155,21 @@ document.addEventListener("click", function Handler(EVENT){
         if(Actions.articleContent.dataset.active === "true") Actions.open(Actions.articleContent);
         else Actions.close(Actions.articleContent);
     }
-    else if (EVENT.target.parentElement.matches("div.theme")) {
+    else if (EVENT.target.parentElement.matches("div.theme#theme")) {
         let chTheme = new AppConfig("change theme for app: ", JSON.parse(localStorage.getItem("@User")).theme);
-        chTheme.changeTheme(); // url for iconInterface.
+        chTheme.changeTheme(); // url for iconInterface or void.
+    }
+
+    else if (EVENT.target.parentElement.matches("ol#options")) {
+        if(!("href" in EVENT.target)) {
+            let chOp = new MenuBar(document.getElementById("central-panel"), document.getElementById("allContent"), document.getElementById("articleContent"));
+            chOp.selectOption(EVENT.target, EVENT.target.parentElement.querySelector("li.actual"));
+
+            chOp.close(chOp.articleContent);
+
+        }
+    }
+    else if(EVENT.target.matches("#miniOfUser")) {
+        console.log("change miniature of user");
     }
 });
