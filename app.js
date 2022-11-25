@@ -149,6 +149,10 @@ document
 .addEventListener("register", StartFeedback.CallRegister, StartFeedback.op);
 
 document.addEventListener("click", function Handler(EVENT){
+    // Aqui se resuelve el problema de los errores en la consola.
+    if(EVENT.target == (document.body.parentElement)) return;
+    else;
+
     if(EVENT.target.matches("div.trackButton #collapse-menu") || EVENT.target.matches("div.trackExit #collapse")) {
         let Actions = new MenuBar(document.getElementById("central-panel"), document.getElementById("allContent"), document.getElementById("articleContent"));
 
@@ -170,6 +174,26 @@ document.addEventListener("click", function Handler(EVENT){
         }
     }
     else if(EVENT.target.matches("#miniOfUser")) {
-        console.log("change miniature of user");
+        const HandlerWindowProfile = new GraphyInterface();
+
+        HandlerWindowProfile
+        .handlerWindowProfile(EVENT.target, document.getElementById("articleContent"));
+    }
+    else if(EVENT.target.matches("#exit-toolAccount") || EVENT.target.matches("#exit-toolAccount path")) {
+        const HandlerWindowProfile = new GraphyInterface();
+
+        HandlerWindowProfile
+        .handlerWindowProfile(document.getElementById("miniOfUser"), 
+        document.getElementById("articleContent"));
+    }
+    else if(EVENT.target.matches("#toolAccount-now") || EVENT.target.matches("#toolAccount-now path")) {
+        const HandlerWindowProfile = new GraphyInterface();
+
+        HandlerWindowProfile
+        .handlerWindowProfile(document.getElementById("miniOfUser"), 
+        document.getElementById("articleContent"));
+        // view instance Account
+        const $account = document.getElementById("optionAccount");
+        $account.click();
     }
 });

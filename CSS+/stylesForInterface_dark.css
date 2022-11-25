@@ -25,6 +25,43 @@ body.dark header.appName h1 {
 body.dark header.appName:hover h1 {
     visibility: visible;
 }
+
+body.dark div.profile {
+    background-color: rgba(25, 0, 255, 0.719);
+}
+body.dark div.profile figure {
+    background-color: white;
+    border-radius: 1em;
+    padding:10px;
+}
+body.dark div.profile figure img {
+    border-radius: 50%;
+    cursor: default;
+}
+body.dark div.profile figure figcaption {
+    text-align: center;
+    background-color: yellow;
+    padding: 8px;
+    color: black;
+    font:bold 1.8em monospace;
+    border-radius: 1em;
+}
+body.dark div.profile figure div.email {
+    color: gray;
+    text-align: center;
+    cursor: default;
+    font: bolder 1.2em sans-serif;
+}
+body.dark div.profile figure div.toolAccount {
+    background-color: transparent;
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+}
+
 /*Para dispositivos pequeños es necesario 520px como maximo*/
 @media all and (max-width: 520px) {
     body.dark main#allContent {

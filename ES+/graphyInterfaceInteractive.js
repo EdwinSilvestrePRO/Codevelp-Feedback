@@ -5,6 +5,12 @@ export default class GraphyInterface {
     static animActual = 0;
     static intervalForDate = 0;
     static rotationMain = 0;
+    static ActionAsync(timeForAll) {
+
+        return new Promise(function(res, reject){
+            setTimeout(()=> res(), timeForAll);
+        });
+    }
     exit(ev) {
         try {
             const isExit = ev.target.matches("#iconForApp");
@@ -35,9 +41,11 @@ export default class GraphyInterface {
         .querySelector("img#iconForApp")
         .src = FeedbackImage.iconURL(true);
 
+        // let imgUser = new FeedbackImage(document.createElement("canvas"));
+        // let url = imgUser.userThumbnails(localStorage.getItem("@User"), false);
         // $templateForApp.content
         // .querySelector("img#miniOfUser")
-        // .src = FeedbackImage.iconURL(true);
+        // .src = url;
 
         let $nodes = document.importNode($templateForApp.content, true);
         document.body.appendChild($nodes);
@@ -193,6 +201,55 @@ export default class GraphyInterface {
             .AnimDiapositive
         );
         return  GraphyInterface.Diapositiva;
+    }
+    async handlerWindowProfile (target, $articleContent) {
+        let isViewProfile = target.dataset.viewprofile == "true";
+        
+        if(isViewProfile) {
+            let $m = document.getElementById("central-panel");
+            if((/hidden/i).test($m.className))
+            $articleContent.classList.remove("blur");
+
+            let $onProfile = document.body.querySelector("div#profileUser");
+            $onProfile.classList.remove("visible");
+            // end action
+            target.dataset.viewprofile = "false";
+
+            await GraphyInterface.ActionAsync(10);
+
+            $onProfile.parentElement.removeChild($onProfile);
+        } 
+        else {
+            $articleContent.classList.add("blur");
+            // obtener plantilla
+            const $profile = document.getElementById("@PROFILE"),
+            {content} = $profile,
+            // obtener datos
+            {name, email} = JSON.parse(localStorage.getItem("@User"));
+            // aplicar las configuraciones.
+            content.querySelector("img#thumbnail-user")
+            .setAttribute("src", target.src);
+
+            content.querySelector("img#thumbnail-user")
+            .setAttribute("src", target.src);
+
+            content.querySelector("figcaption#name-user")
+            .textContent = name;
+
+            content.querySelector("div.email")
+            .textContent = email;
+
+            let $nodes = document.importNode(content, true);
+
+            document.body.appendChild($nodes);
+            // end Action
+            target.dataset.viewprofile = "true";
+
+            await GraphyInterface.ActionAsync(10);
+
+            let $onProfile = document.body.querySelector("div#profileUser");
+            $onProfile.classList.add("visible");
+        }
     }
 }
 document

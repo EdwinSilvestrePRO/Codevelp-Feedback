@@ -63,3 +63,24 @@ div.chConfig {
 div.chConfig.visible {
     visibility: visible;
 }
+
+div.profile {
+    z-index: 44;
+    position: fixed;
+    top:54px;
+    left:0px;
+    bottom: auto;
+    right: auto;
+    width: 100vw;
+    height: calc(100vh - 54px);
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: start;
+    opacity: 0;
+    transition: 1250ms opacity linear;
+}
+div.profile.visible {
+    opacity: 1;
+}
