@@ -1,6 +1,9 @@
+// Tambien utilizando la clase FeedbackImage.
 import FeedbackImage from "./images.js";
 
+// Clase que representa la interfaz de usuario.
 export default class GraphyInterface {
+    // propiedades státicas necesarias...
     static Diapositiva = new GraphyInterface();
     static animActual = 0;
     static intervalForDate = 0;
@@ -40,7 +43,7 @@ export default class GraphyInterface {
         $templateForApp.content
         .querySelector("img#iconForApp")
         .src = FeedbackImage.iconURL(true);
-
+        /* definir el cargador predeterminado de la plicacion o la que halla elegido ya el usuario. */
         // let imgUser = new FeedbackImage(document.createElement("canvas"));
         // let url = imgUser.userThumbnails(localStorage.getItem("@User"), false);
         // $templateForApp.content
@@ -108,6 +111,7 @@ export default class GraphyInterface {
             
         }
     }
+    // amimacion del relog analógico o digital.
     AnimDiapositive() {
         const $diapositive = document.getElementById("view-op"),
         {width, height} = $diapositive, 
@@ -202,6 +206,7 @@ export default class GraphyInterface {
         );
         return  GraphyInterface.Diapositiva;
     }
+    // Control de la ventana del perfil...
     async handlerWindowProfile (target, $articleContent) {
         let isViewProfile = target.dataset.viewprofile == "true";
         

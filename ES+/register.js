@@ -1,3 +1,7 @@
+/* La clase Register se encarga de hacer tareas complejas de registro en el navegador
+dado que utiliza las apis: localStorage y SessionStorage
+esta para que sea Compatible con cualquier navegador.
+*/
 export default class Register {
     constructor(template) {
         this.template = template;
@@ -27,16 +31,16 @@ export default class Register {
             const $register = document.getElementById("register-now");
             $register.classList.add("asyncVisible");
             val++;
-
-            // return  this
-            // .postAsync(val);
         })
         .catch(console.warn);
     }
     static async setInformation($register) {
+        // nombres y el patron que debe de seguir para que sea válido.
         let name = $register.name, patternName = /^[a-zA-Z]{3,}\s[a-zA-Z]{3,}(\s[a-zA-Z]{3,})*$/, valueName = "";
-
+        
+        // email y el patron que debe de seguir para que sea válido.
         let email = $register.email, patternEmail = /^[a-z-A-Z]{1}\w{3,}\@(gmail.com|hotmail.com|codevelp.com)(.[a-z-A-Z]{3,})*$/, valueEmail = "";
+
         // evaluando el nombre puesto en la interfas.
         if(patternName.test(name.value)) {
             valueName = name.value;
@@ -52,6 +56,7 @@ export default class Register {
                         "email": valueEmail
                     }));
                     await Register.ActionAsync(2000);
+                    // fin de registro basico del usuario.
                     window.location.reload();
                 }
                 else {

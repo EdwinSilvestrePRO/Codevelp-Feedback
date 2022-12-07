@@ -1,11 +1,17 @@
+// Las importaciones de las clases en ficheros individuales.
 import Register from './ES+/register.js'
 import GraphyInterface from './ES+/graphyInterfaceInteractive.js';
 import FeedbackImage from './ES+/images.js';
 import MenuBar from './ES+/menu.js';
 import AppConfig from './ES+/config.js';
+
+// La clase <StartFeedback> es donde comienza todo cuando es invocado por el evento DOMContentLoaded, osea este es el origen.
 class StartFeedback {
+    // Este es el valor que se gestiona para hacer saber a Feedback si el usuario no ha cerrado sesión.
     #isPresent = ()=> sessionStorage.getItem("@instance");
+
     canvas = document.querySelector("canvas.loader");
+
     static op = {
         once : false,
         capture: false
@@ -18,7 +24,7 @@ class StartFeedback {
         reg.setInterface();
     }
     static Main(eventObject) {
-        // the request for user...
+        // Peticion del usuario, la llave se llama @User.
         let User = localStorage.getItem("@User");
         if(User) {
             let {theme} = JSON.parse(User);
@@ -116,6 +122,8 @@ class StartFeedback {
             }, 1000);
         }, 1500);
     }
+
+    // Hace prueba de que si el usuario esta registrado pues se inicia completamente.
     Authentication (ev) {
         if(this.#isPresent()) {
             document.body.parentElement.removeAttribute("data-start");
@@ -138,16 +146,21 @@ class StartFeedback {
 
 // agregando el evento y el metodo la cual va a llamar...
 
+// Haciendo incercion de la imagen para la aplicacion, es el icono de acceso directo.
 window
 .addEventListener("DOMContentLoaded", FeedbackImage.setIcon);
+
+// Es donde ya utiliza la clase <StartFeedback> que es el origen.
 window
 .addEventListener("DOMContentLoaded", function(){ 
     return new StartFeedback().Authentication();
 }, StartFeedback.op);
 
+// Este evento es invocado si el usuario no esta registrado.
 document
 .addEventListener("register", StartFeedback.CallRegister, StartFeedback.op);
 
+// Este es el gestor principal del evento click en la aplicacion.
 document.addEventListener("click", function Handler(EVENT){
     // Aqui se resuelve el problema de los errores en la consola.
     if(EVENT.target == (document.body.parentElement)) return;

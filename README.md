@@ -14,3 +14,5 @@ Neverneit Sober
 Edwin Silvestre
 
 y los demas Codevolps trabajamos para ello.
+
+Tu que ves este projecto tambien puedes unirte.

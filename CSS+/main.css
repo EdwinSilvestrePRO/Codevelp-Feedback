@@ -1,3 +1,4 @@
+/* importacion de estilos escritos en otros ficheros. */
 @import './started.css' all;
 @import './stylesForInterface_light.css' all;
 @import './stylesForInterface_dark.css' all;

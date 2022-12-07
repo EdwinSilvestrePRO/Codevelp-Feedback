@@ -1,5 +1,7 @@
 [
     {
+    "Descripcion": "Este es un archivo json para poder ver que configuracion soporta Codevelp FeedBack.",
+
     "keyName" : "@User",
     "properties": {
         "theme": "light",

@@ -1,3 +1,4 @@
+/* Estilos para cuando empiese la aplicación */
 /* the styles of theme light */
 body.light {
     background-color: white;
@@ -121,5 +122,4 @@ form[data-register] fieldset.register div {
     flex-flow:row wrap;
     justify-content: flex-end;
     align-items: flex-start;
-    /* align-items: */
 }

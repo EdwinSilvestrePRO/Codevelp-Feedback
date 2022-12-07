@@ -1,4 +1,7 @@
+// importando la clase GraphyInterface.
 import GraphyInterface from './graphyInterfaceInteractive.js';
+
+// MenuBar es la clase que administra las seleciones del usuario y es por eso que hereda de GraphyInterface.
 export default class MenuBar extends GraphyInterface {
 	constructor(section, $main, articleContent) {
 	super();

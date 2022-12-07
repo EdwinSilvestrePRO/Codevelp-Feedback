@@ -1,6 +1,9 @@
+// importando las dos clases para refrescar la configuración de Codevelp Feedback.
 import Register from "./register.js";
+
 import FeedbackImage from "./images.js";
 
+// clase que gestiona la configuracion de la aplicacion principal.
 export default class AppConfig extends Register {
     constructor(type, dataConfig) {
         super(null);

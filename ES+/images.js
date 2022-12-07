@@ -1,6 +1,11 @@
+// Importacion de la clase Register.
 import Register from "./register.js";
+
+// La clase FeedbackImage que hereda de Register. Esta clase Contiene todas las imagenes de la aplicacion feedback
+// creadas con la API de canvas y usando la URL.
 export default class FeedbackImage extends Register {
     constructor($canvas = document.createElement("canvas")) {
+        // llamando el constructor de la clase Register.
         super(null);
         this.$canvas = $canvas;
     }
@@ -10,14 +15,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -75,14 +78,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined; 
         $canvas.width = 274;
@@ -141,14 +142,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -206,14 +205,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -272,14 +269,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -336,14 +331,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -412,14 +405,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -491,14 +482,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -565,14 +554,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -629,14 +616,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -690,14 +675,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -840,14 +823,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -990,14 +971,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -1142,14 +1121,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -1292,14 +1269,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -1453,14 +1428,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -1602,14 +1575,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -1702,14 +1673,12 @@ export default class FeedbackImage extends Register {
         const {$canvas} = this;
         // description for user.
         $canvas.dataset.Iam = Iam !== null? Iam : "Student";
-        // $canvas.dataset.Iam = "ABCDEFGHIJKLM08OP";
         // fill of user
         $canvas.dataset.fill = fill !== null? fill : "white";
         // stroke of user
         $canvas.dataset.stroke = stroke !== null? stroke : "black";
         // font family for user
         $canvas.dataset.font = font !== null? font : "normal";
-        // const $canvas = document.createElement("canvas");
 
         let context = undefined;
         $canvas.width = 274;
@@ -1780,6 +1749,7 @@ export default class FeedbackImage extends Register {
 
         return dataToRenurn;
     }
+    // Todas las imagenes agrupadas en una funcion de retorno.
     allImages () {
         return {
 
