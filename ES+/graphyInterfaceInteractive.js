@@ -14,18 +14,7 @@ export default class GraphyInterface {
             setTimeout(()=> res(), timeForAll);
         });
     }
-    exit(ev) {
-        try {
-            const isExit = ev.target.matches("#iconForApp");
-            if(isExit) {
-                let isExitForApp = window.confirm("¿Desea salir de FeedBack?");
-                if(isExitForApp) window.close();
-                else "none..";
-            } else "none...";
-        } catch (err) {
-            console.warn(err);
-        }
-    }
+
     viewDate () {
         const $initialDate = document.getElementById("date-normal"),
         date = new Date();
@@ -44,11 +33,6 @@ export default class GraphyInterface {
         .querySelector("img#iconForApp")
         .src = FeedbackImage.iconURL(true);
         /* definir el cargador predeterminado de la plicacion o la que halla elegido ya el usuario. */
-        // let imgUser = new FeedbackImage(document.createElement("canvas"));
-        // let url = imgUser.userThumbnails(localStorage.getItem("@User"), false);
-        // $templateForApp.content
-        // .querySelector("img#miniOfUser")
-        // .src = url;
 
         let $nodes = document.importNode($templateForApp.content, true);
         document.body.appendChild($nodes);
@@ -62,7 +46,20 @@ export default class GraphyInterface {
         GraphyInterface.intervalForDate = setInterval(GraphyInterface.Diapositiva.viewDate, 1000*60*60);
     }
     MainProttected (descriptive, boxContent, templateForSet) {
-        if(descriptive == "HOME") {
+        if(descriptive == "EXIT") {
+            let countBack = 3;
+         boxContent.innerHTML = `<p>Close session in ${countBack}</p>`;
+         let controlBack = setInterval(()=> {
+             countBack--;
+             boxContent.innerHTML = `<p>Close session in ${countBack}</p>`;
+            if(countBack <= 0) {
+                clearInterval(controlBack);
+                window.close();
+             }
+         }, 1000);
+         document.removeEventListener("click", window.handlerFunctions);
+        }
+        else if(descriptive == "HOME") {
             let {content} = templateForSet,
             
             mainNode = document.importNode(content, true);
@@ -207,7 +204,7 @@ export default class GraphyInterface {
         return  GraphyInterface.Diapositiva;
     }
     // Control de la ventana del perfil...
-    async handlerWindowProfile (target, $articleContent) {
+    async handlerWindowProfile (target, media, $articleContent) {
         let isViewProfile = target.dataset.viewprofile == "true";
         
         if(isViewProfile) {
@@ -233,10 +230,7 @@ export default class GraphyInterface {
             {name, email} = JSON.parse(localStorage.getItem("@User"));
             // aplicar las configuraciones.
             content.querySelector("img#thumbnail-user")
-            .setAttribute("src", target.src);
-
-            content.querySelector("img#thumbnail-user")
-            .setAttribute("src", target.src);
+            .setAttribute("src", media.url);
 
             content.querySelector("figcaption#name-user")
             .textContent = name;
@@ -259,8 +253,3 @@ export default class GraphyInterface {
 }
 document
 .addEventListener("finishLoader", GraphyInterface.Main);
-
-const IforApp = new GraphyInterface();
-
-document
-.addEventListener("click", IforApp.exit);

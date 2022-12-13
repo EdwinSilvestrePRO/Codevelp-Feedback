@@ -1832,18 +1832,34 @@ export default class FeedbackImage extends Register {
 
         return $canvas.toDataURL("png");
     };
-    // userThumbnails (local, isAll) {
-    //     const allImages = this.allImages();
-    //     let {url} = allImages.one.call(this, "Web", "yellow", "black", "monospace");
-    //     // let { image } = JSON.parse(local);
-    //     // if(image && !isAll)
-    //     // console.log(image);
-    //     // else {
-    //     //     console.log(notImage);
-    //     // }
-    //     // console.log();
-    //     return url;
-    // }
+    userThumbnails (local, isAll) {
+        const user = JSON.parse(local);
+
+        let allImages = this.allImages();
+
+        let image = {};
+        /* 
+        image: one,
+        Iam: "student",
+        "fill": "black",
+        "stroke": "white",
+        "font": "cursive";
+        */
+        if(user.media) {
+            let {media} = user;
+            image = allImages[media.image].call(this, media.Iam, media.fill, media.stroke, media.font);
+        }
+        else {
+            image = allImages.one.call(this);
+            let newOb = user;
+            this.$canvas.dataset.image = "one";
+            newOb.media = this.$canvas.dataset;
+            // insertar propiedades por defecto.
+            localStorage.setItem("@User", JSON.stringify(newOb));
+        }
+        image.err? console.warn(image.err) : null;
+        return image;
+    }
     static async setIcon() {
         const $linkIcon = document.getElementById("iconApp");
         $linkIcon.href = FeedbackImage.iconURL(false);

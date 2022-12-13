@@ -144,24 +144,7 @@ class StartFeedback {
     }
 }
 
-// agregando el evento y el metodo la cual va a llamar...
-
-// Haciendo incercion de la imagen para la aplicacion, es el icono de acceso directo.
-window
-.addEventListener("DOMContentLoaded", FeedbackImage.setIcon);
-
-// Es donde ya utiliza la clase <StartFeedback> que es el origen.
-window
-.addEventListener("DOMContentLoaded", function(){ 
-    return new StartFeedback().Authentication();
-}, StartFeedback.op);
-
-// Este evento es invocado si el usuario no esta registrado.
-document
-.addEventListener("register", StartFeedback.CallRegister, StartFeedback.op);
-
-// Este es el gestor principal del evento click en la aplicacion.
-document.addEventListener("click", function Handler(EVENT){
+window.handlerFunctions = function(EVENT){
     // Aqui se resuelve el problema de los errores en la consola.
     if(EVENT.target == (document.body.parentElement)) return;
     else;
@@ -186,27 +169,58 @@ document.addEventListener("click", function Handler(EVENT){
 
         }
     }
-    else if(EVENT.target.matches("#miniOfUser")) {
-        const HandlerWindowProfile = new GraphyInterface();
+    else if(EVENT.target.matches("#iconForApp")) {
+        const HandlerWindowProfile = new GraphyInterface(),
+        image = new FeedbackImage();
+
+        let userMedia = image.userThumbnails(localStorage.getItem("@User"), false);
 
         HandlerWindowProfile
-        .handlerWindowProfile(EVENT.target, document.getElementById("articleContent"));
+        .handlerWindowProfile(EVENT.target, userMedia, document.getElementById("articleContent"));
     }
     else if(EVENT.target.matches("#exit-toolAccount") || EVENT.target.matches("#exit-toolAccount path")) {
-        const HandlerWindowProfile = new GraphyInterface();
-
+        const HandlerWindowProfile = new GraphyInterface(),
+        image = new FeedbackImage();
+        
+        let userMedia = image.userThumbnails(localStorage.getItem("@User"), false);
+        
         HandlerWindowProfile
-        .handlerWindowProfile(document.getElementById("miniOfUser"), 
-        document.getElementById("articleContent"));
+        .handlerWindowProfile(document.getElementById("iconForApp"), userMedia, document.getElementById("articleContent"));
     }
     else if(EVENT.target.matches("#toolAccount-now") || EVENT.target.matches("#toolAccount-now path")) {
-        const HandlerWindowProfile = new GraphyInterface();
-
+        const HandlerWindowProfile = new GraphyInterface(),
+        image = new FeedbackImage();
+        
+        let userMedia = image.userThumbnails(localStorage.getItem("@User"), false);
+        
         HandlerWindowProfile
-        .handlerWindowProfile(document.getElementById("miniOfUser"), 
-        document.getElementById("articleContent"));
-        // view instance Account
+        .handlerWindowProfile(document.getElementById("iconForApp"), userMedia, document.getElementById("articleContent"));
+        // // view instance Account
         const $account = document.getElementById("optionAccount");
         $account.click();
     }
-});
+    // Modificando para poder mejorar el flujo de salida
+    else if (EVENT.target.matches("#Idontnow")) {
+        let isExitForApp = window.confirm("¿Desea salir de FeedBack?");
+            if(isExitForApp) window.close();
+    }
+}
+
+// agregando el evento y el metodo la cual va a llamar...
+
+// Haciendo incercion de la imagen para la aplicacion, es el icono de acceso directo.
+window
+.addEventListener("DOMContentLoaded", FeedbackImage.setIcon);
+
+// Es donde ya utiliza la clase <StartFeedback> que es el origen.
+window
+.addEventListener("DOMContentLoaded", function(){ 
+    return new StartFeedback().Authentication();
+}, StartFeedback.op);
+
+// Este evento es invocado si el usuario no esta registrado.
+document
+.addEventListener("register", StartFeedback.CallRegister, StartFeedback.op);
+
+// Este es el gestor principal del evento click en la aplicacion.
+document.addEventListener("click", window.handlerFunctions);
