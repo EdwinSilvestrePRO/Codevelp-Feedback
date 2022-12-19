@@ -83,9 +83,40 @@ export default class GraphyInterface {
             
         }
         else if (descriptive == "ACCOUNT") {
-            let {content} = templateForSet,
+            let {content} = templateForSet;
+            // aplicar el algoritmo para que inserte los datos correctos.
+            const theImage = new FeedbackImage(),
+            local = localStorage.getItem("@User"),
+            Parsed = JSON.parse(local);
+
+            let {url} = theImage.userThumbnails(local, false);
+            content
+            .querySelector("img#thumbnails-user")
+            .setAttribute("src", url);
+
+            content
+            .querySelector("div.email-user")
+            .textContent = Parsed.email;
             
-            mainNode = document.importNode(content, true);
+            content
+            .querySelector("pre.info")
+            .innerHTML = `<i>Detalles:</i>
+            <br>
+            <br>
+            Esta cuenta fue registrada en el dia ${Parsed.dateShortRegister}
+            en esta aplicacion Web Codevelp FeedBack.
+            <br>
+            <br>
+            dia/mes/año
+            <br>
+            Primer acceso: ${Parsed.dateShort}<br>
+            Ultima modificación: ${Parsed.lastModified}`;
+
+            content
+            .querySelector("figcaption#names")
+            .textContent = Parsed.name;
+
+            let mainNode = document.importNode(content, true);
             
             boxContent.appendChild(mainNode);
             
@@ -248,6 +279,183 @@ export default class GraphyInterface {
 
             let $onProfile = document.body.querySelector("div#profileUser");
             $onProfile.classList.add("visible");
+        }
+    }
+     async handlePropertiesForUser () {
+            const { parentElement } = document.querySelector("div.theAssemblage-thumbnails");
+
+                let Iam = parentElement.querySelector("input#description").value,
+            imageActual = parentElement.querySelector("img#thumbnail-dynamic"),
+            fill = parentElement.querySelector("input#fill").value,
+            track = parentElement.querySelector("input#track").value,
+            font = parentElement.querySelector("select#font-family").value;
+            
+            const imageForChange = new FeedbackImage(document.createElement("canvas"), Iam, fill, track, font, imageActual);
+            let result = imageForChange.imgActual();
+
+            if(result.err) {
+                // mostrar error de cambios por 3 segundos y luego quitarlo.
+                const viewErr = document.getElementById("viewRunnCongif");
+                viewErr.textContent = result.err;
+
+                viewErr.classList.add("err");
+                viewErr.classList.add("visible");
+
+                await GraphyInterface.ActionAsync(3000);
+
+                viewErr.classList.remove("err");
+                viewErr.classList.remove("visible");
+                return false;
+                
+            } else {
+                imageActual.classList.add("hidden");
+                
+                imageActual.src = result.url;
+                
+                await GraphyInterface.ActionAsync(100);
+                
+                imageActual.classList.remove("hidden");
+                
+                return true;
+            }
+
+    }
+    async interfaceForConfigProfile (template) {
+        if(template) {
+            let {content} = template;
+            const theQueryImage = new FeedbackImage(),
+            storage = localStorage.getItem("@User"),
+            pStorage = JSON.parse(storage),
+            media = pStorage.media;
+
+            let image = theQueryImage.userThumbnails(storage, false);
+            
+            content
+            .querySelector("img#thumbnail-dynamic")
+            .setAttribute("src", image.url);
+
+            let index = JSON.parse(localStorage.getItem("@User")).media.image;
+
+            content
+            .querySelector("img#thumbnail-dynamic")
+            .setAttribute("data-imageactual", index);
+
+            // insercion de las propiedades obtenidas.
+            content
+            .querySelector("input#description")
+            .setAttribute("value", media.Iam);
+
+            const Selected = content
+            .querySelector("select#font-family");
+            let blockValue = {};
+            for (let op of Selected.options) {
+                if(op.value == media.font) blockValue = op;
+            }
+            blockValue
+            .setAttribute("selected", "");
+
+            content
+            .querySelector("input#fill")
+            .setAttribute("value", media.fill == "white"? "#ffffff" : media.fill);
+
+            content
+            .querySelector("input#track")
+            .setAttribute("value", media.stroke == "black"? "#000000" : media.stroke);
+            
+            // insercion de datos importantes de usuario.
+            content
+            .querySelector("input#namesForChange")
+            .setAttribute("value", pStorage.name);
+
+            content
+            .querySelector("input#emailForChange")
+            .setAttribute("value", pStorage.email);
+
+            let nodesProfile = document.importNode(content, true);
+            
+            document.body.appendChild(nodesProfile);
+            
+            let interfaceConfigProfile = document.querySelector("div.wconfigAccount");
+            
+            await GraphyInterface.ActionAsync(0);
+
+            interfaceConfigProfile.classList.add("show");
+        } else {
+            let interfaceConfigProfile = document.querySelector("div.wconfigAccount");
+            document.body.removeChild(interfaceConfigProfile);
+        }
+    }
+    // Agrego "asynchronous" para ejecutar acciones asíncronas.
+    async changeThumbnails(positionX) {
+        const { parentElement } = document.querySelector("div.theAssemblage-thumbnails");
+        if(positionX == "left") {
+            // const { parentElement } = document.querySelector("div.theAssemblage-thumbnails");
+            // change thumbnails to left.
+            let Iam = parentElement.querySelector("input#description").value,
+            imageActual = parentElement.querySelector("img#thumbnail-dynamic"),
+            fill = parentElement.querySelector("input#fill").value,
+            track = parentElement.querySelector("input#track").value,
+            font = parentElement.querySelector("select#font-family").value;
+            
+            const imageForChange = new FeedbackImage(document.createElement("canvas"), Iam, fill, track, font, imageActual);
+            let result = imageForChange.previousImage();
+            
+            if(result.err) {
+                // mostrar error de cambios por 3 segundos y luego quitarlo.
+                const viewErr = document.getElementById("viewRunnCongif");
+                viewErr.textContent = result.err;
+        
+                viewErr.classList.add("err");
+                viewErr.classList.add("visible");
+        
+                await GraphyInterface.ActionAsync(3000);
+        
+                viewErr.classList.remove("err");
+                viewErr.classList.remove("visible");
+                
+            } else {
+                imageActual.classList.add("hidden");
+                
+                imageActual.src = result.url;
+                
+                await GraphyInterface.ActionAsync(100);
+                
+                imageActual.classList.remove("hidden");
+            }
+
+        } else {
+            // change thumbnails to right.
+            let Iam = parentElement.querySelector("input#description").value,
+            imageActual = parentElement.querySelector("img#thumbnail-dynamic"),
+            fill = parentElement.querySelector("input#fill").value,
+            track = parentElement.querySelector("input#track").value,
+            font = parentElement.querySelector("select#font-family").value;
+            
+            const imageForChange = new FeedbackImage(document.createElement("canvas"), Iam, fill, track, font, imageActual);
+            let result = imageForChange.nextImage();
+            
+            if(result.err) {
+                // mostrar error de cambios por 3 segundos y luego quitarlo.
+                const viewErr = document.getElementById("viewRunnCongif");
+                viewErr.textContent = result.err;
+
+                viewErr.classList.add("err");
+                viewErr.classList.add("visible");
+
+                await GraphyInterface.ActionAsync(3000);
+
+                viewErr.classList.remove("err");
+                viewErr.classList.remove("visible");
+                
+            } else {
+                imageActual.classList.add("hidden");
+                
+                imageActual.src = result.url;
+                
+                await GraphyInterface.ActionAsync(100);
+                
+                imageActual.classList.remove("hidden");
+            }
         }
     }
 }

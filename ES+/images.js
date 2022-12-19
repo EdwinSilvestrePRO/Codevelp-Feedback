@@ -4,10 +4,16 @@ import Register from "./register.js";
 // La clase FeedbackImage que hereda de Register. Esta clase Contiene todas las imagenes de la aplicacion feedback
 // creadas con la API de canvas y usando la URL.
 export default class FeedbackImage extends Register {
-    constructor($canvas = document.createElement("canvas")) {
+    #actual = null;
+    constructor($canvas = document.createElement("canvas"), Iam, fill, track, font, actual) {
         // llamando el constructor de la clase Register.
         super(null);
         this.$canvas = $canvas;
+        this.Iam = Iam;
+        this.fill = fill;
+        this.track = track;
+        this.font = font;
+        this.#actual = actual;
     }
 
     // list images:
@@ -1836,7 +1842,7 @@ export default class FeedbackImage extends Register {
         const user = JSON.parse(local);
 
         let allImages = this.allImages();
-
+        if(isAll) return allImages;
         let image = {};
         /* 
         image: one,
@@ -1859,6 +1865,56 @@ export default class FeedbackImage extends Register {
         }
         image.err? console.warn(image.err) : null;
         return image;
+    }
+    nextImage() {
+        // Imagen siguiente para retornar.
+        const {Iam, fill, track, font} = this;
+        
+        // cargar todas las imagenes
+        const IMAGES = this.allImages();
+
+        let strings = Object.keys(IMAGES);
+
+        let indexOfActual = strings.indexOf(this.#actual.dataset.imageactual);
+
+        if(indexOfActual >= strings.length - 1) indexOfActual = 0;
+        else indexOfActual++;
+
+        this.#actual.dataset.imageactual = strings[indexOfActual];
+
+        return IMAGES[strings[indexOfActual]].call(this, Iam, fill, track, font);
+    }
+    previousImage() {
+        // Imagen atras para retornar.
+        const {Iam, fill, track, font} = this;
+        
+        // cargar todas las imagenes
+        const IMAGES = this.allImages();
+        
+        let strings = Object.keys(IMAGES);
+        
+        let indexOfActual = strings.indexOf(this.#actual.dataset.imageactual);
+        
+        if(indexOfActual <= 0) indexOfActual = (strings.length -1);
+        else indexOfActual--;
+        
+        this.#actual.dataset.imageactual = strings[indexOfActual];
+        
+        return IMAGES[strings[indexOfActual]].call(this, Iam, fill, track, font);
+    }
+    imgActual() {
+        const {Iam, fill, track, font} = this;
+        
+        // cargar todas las imagenes
+        const IMAGES = this.allImages();
+    
+        let strings = Object.keys(IMAGES);
+    
+        let indexOfActual = strings.indexOf(this.#actual.dataset.imageactual);
+            
+        this.#actual.dataset.imageactual = strings[indexOfActual];
+    
+        return IMAGES[strings[indexOfActual]].call(this, Iam, fill, track, font);
     }
     static async setIcon() {
         const $linkIcon = document.getElementById("iconApp");

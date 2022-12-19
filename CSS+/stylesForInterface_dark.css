@@ -62,7 +62,214 @@ body.dark div.profile figure div.toolAccount {
     align-items: center;
     align-content: flex-start;
 }
+body.dark div.wconfigAccount {
+    z-index: 44;
+    background-color: rgba(43, 27, 53, 0.644);
+    width:100vw;
+    height: calc(100vh - 54px);
+    position:fixed;
+    top:55px;
+    left:0px;
+    opacity: 0;
+    transition: 400ms opacity linear;
+    overflow-x:hidden;
+    overflow-y: auto;
+}
+body.dark div.wconfigAccount::-webkit-scrollbar,
+body.dark div.wconfigAccount::-webkit-scrollbar-button,
+body.dark div.wconfigAccount::-webkit-scrollbar-track,
+body.dark div.wconfigAccount::-webkit-scrollbar-thumb,
+body.dark div.wconfigAccount::-webkit-scrollbar-corner {
+    appearance: none;
+}
+body.dark div.wconfigAccount::-webkit-scrollbar {
+    width: 10px;
+    height: auto;
+    /* background-color: var(--barScroll-color); */
+}
+body.dark div.wconfigAccount::-webkit-scrollbar-button {
+    display: none;
+}
+body.dark div.wconfigAccount::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+body.dark div.wconfigAccount::-webkit-scrollbar-thumb {
+    background-color: var(--barScroll-color);
+    width: 10px;
+    border-radius: 5px;
+}
+body.dark div.wconfigAccount.show {
+    opacity: 1;
+}
+body.dark div.wconfigAccount div.controls {
+    background-color: transparent;
+    padding:2px;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+}
+body.dark div.wconfigAccount div.controls svg {
+    transform: scale(1);
+    transition: 300ms transform linear;
+}
+body.dark div.wconfigAccount div.controls svg:hover {
+    transform: scale(1.2);
+}
 
+body.dark div.wconfigAccount div.theAssemblage-thumbnails *::selection {
+    background-color: transparent;
+}
+body.dark div.wconfigAccount div.theAssemblage-thumbnails {
+    background-color: white;
+    display: grid;
+    margin: 0px;
+    margin-top: 20px;
+    min-width: 300px;
+    min-height: 300px;
+    grid-template-columns: repeat(6, 16.66%);
+    grid-template-rows: repeat(5, 20%);
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    align-content: space-around;
+}
+body.dark div.wconfigAccount div.theAssemblage-thumbnails figure {
+    background-color: transparent;
+    z-index: 4;
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: center;
+    grid-column: 1 / span 6;
+    grid-row: 1 / span 5;
+}
+body.dark div.wconfigAccount div.theAssemblage-thumbnails figure img {
+    width: 100%;
+    height: auto;
+    filter: opacity(100%);
+    transition: 300ms filter linear;
+}
+body.dark div.wconfigAccount div.theAssemblage-thumbnails figure img.hidden {
+    filter: opacity(0%);
+}
+body.dark div.wconfigAccount div.theAssemblage-thumbnails figure figcaption {
+    background-color: transparent;
+    padding:2px;
+}
+body.dark div.wconfigAccount div.theAssemblage-thumbnails figure figcaption input {
+    border-radius: 1em;
+    background-color: black;
+    text-indent: 8px;
+    color: white;
+    font-size: 1.6em;
+    font-family: monospace;
+    outline: none;
+    border: none;
+}
+body.dark div.wconfigAccount div.theAssemblage-thumbnails svg {
+    z-index: 8;
+    transform: scale(1);
+    transition: 300ms transform ease;
+}
+body.dark div.wconfigAccount div.theAssemblage-thumbnails svg:hover {
+    transform: scale(0.8);
+}
+body.dark div.wconfigAccount div.theAssemblage-thumbnails svg.left {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+body.dark div.wconfigAccount div.theAssemblage-thumbnails svg.right {
+    grid-column: 6 / 7;
+    grid-row: 3 / 4;
+}
+body.dark div.wconfigAccount div.theAssemblage-thumbnails svg.collapce-allImages {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+
+}
+body.dark div.wconfigAccount div.theAssemblage-thumbnails figure figcaption input::placeholder {
+    color: yellow;
+}
+body.dark div.wconfigAccount div.properties {
+    background-color: transparent;
+    padding: 2px;
+    color: white;
+}
+body.dark div.wconfigAccount div.properties table {
+    margin: 0px 0px 0px 0px;
+    margin:auto;
+}
+body.dark div.wconfigAccount div.properties table, 
+body.dark div.wconfigAccount div.properties table tbody,
+body.dark div.wconfigAccount div.properties table tbody tr,
+body.dark div.wconfigAccount div.properties table tbody tr th,
+body.dark div.wconfigAccount div.properties table tbody tr td
+{
+    color: white;
+    font-size: 1.02em;
+    font-family: monospace;
+    border: none;
+    border-collapse: separate;
+    border-spacing:16px 0px;
+    padding: 2px;
+}
+body.dark div.wconfigAccount div.properties table caption {
+    color: white;
+    padding: 2px;
+    font-size: 1.3em;
+    text-decoration:solid white underline;
+    font-family: monospace;
+
+} 
+body.dark div.wconfigAccount div.properties table tbody tr td select {
+    background-color: black;
+    color: white;
+}
+body.dark div.wconfigAccount div.properties label {
+    display: block;
+    margin-top: 10px;
+    padding:2px;
+    font:bold 1.4em monospace;
+    text-align: center;
+}
+body.dark div.wconfigAccount div.properties input::placeholder {
+    color: red;
+}
+body.dark div.wconfigAccount div.properties input {
+    background-color: transparent;
+    text-align: left;
+    color: white;
+    display: flex;
+    margin: auto;
+    padding:2px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid yellow;
+    font:bold 1.4em monospace;
+}
+body.dark div.wconfigAccount div.properties input.invalid {
+    border-bottom: 4px solid red;
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+    border-top: 4px solid red;
+}
+
+body.dark div.wconfigAccount div.properties input:focus,
+body.dark div.wconfigAccount div.properties input:focus,
+body.dark div.wconfigAccount div.properties input:focus
+{
+    border: none;
+    border-bottom: 2px solid rgb(0, 255, 0);
+}
+body.dark div.wconfigAccount div.properties input[type="color"] {
+    border: none;
+    background-color: black;
+}
 /*Para dispositivos pequeños es necesario 520px como maximo*/
 @media all and (max-width: 520px) {
     body.dark main#allContent {
@@ -269,6 +476,68 @@ body.dark div.profile figure div.toolAccount {
     body.dark main#allContent section.menu nav ol.options li.item:hover {
         scale: 1.3;
         text-decoration-line:underline;
+    }
+    body.dark main#allContent article#articleContent div.userAccount {
+        --color-text-C: black;
+        /* layer #1 */
+        background-color: var(--background-text-A);
+        color: var(--color-text-A);
+        padding:8px;
+        text-align: left;
+    }
+    body.dark main#allContent article#articleContent div.userAccount figure {
+        /* layer #2 */
+        background-color: transparent;
+        margin:0px 0px 0px 0px;
+        padding: 0px;
+        width:calc(100%);
+        display:flex;
+        flex-flow: column wrap;
+        align-items:center;
+        justify-content:flex-end;
+    }
+    body.dark main#allContent article#articleContent div.userAccount figure img {
+        border-radius: var(--border-radius);
+        margin:0px 0px 0px 0px;
+        width:80%;
+        height:auto;
+    }
+    body.dark main#allContent article#articleContent div.userAccount figure figcaption {
+        text-align: center;
+        color: var(--color-text-A2);
+        font-size: var(--font-size-A);
+        font-style: var(--font-style-A);
+        font-family: var(--font-family-A);
+        margin:0px 0px 0px 0px;
+        width:100%;
+    }
+    body.dark main#allContent article#articleContent div.userAccount hr {
+        border-color: var(--color-text-A);
+    }
+    body.dark main#allContent article#articleContent div.userAccount figure div.email-user {
+        padding: 0px;
+        margin:0px 0px 0px 0px;
+        color: var(--color-text-A);
+        font-size: var(--font-size-C);
+        font-style: var(--font-style-C);
+        font-family: serif;
+        letter-spacing: 2px;
+    }
+    body.dark main#allContent article#articleContent div.userAccount pre.info {
+        background-color: transparent;
+        white-space: normal;
+        word-wrap: normal;
+        color: var(--color-text-A);
+        font-size: var(--font-size-A2);
+        font-style: var(--font-style-A);
+        font-family: var(--font-family-A);
+        margin:0px 0px 0px 0px;
+    }
+    body.dark main#allContent article#articleContent div.userAccount pre i {
+        margin:0px 0px 0px 0px;
+        text-decoration-line:underline;
+        text-decoration-color: var(--color-text-A);
+        text-decoration-style: solid;
     }
 }
 

@@ -46,14 +46,30 @@ export default class Register {
             valueName = name.value;
                 //evaluando el email puesto en la interfas.
                 if(patternEmail.test(email.value)) {
+
+                    const date = new Date();
+
+                    let day = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"][date.getDay()],
+
+                    month = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Juio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"][date.getMonth()],
+
+                    shortingDate = `${date.getDate()} / ${date.getMonth()} / ${date.getFullYear()}`,
+
+                    dataToString = (`${day}, ${date.getDate()} de ${month} del año ${date.getFullYear()}`);
+
                     valueEmail = email.value;
+
                     $register.sendInformation.classList.remove("notSend");
 
                     // almacenar los datos de registro selladamente en el almacenamiento local:
                     localStorage.setItem("@User", JSON.stringify({
                         "theme": "light",
                         "name": valueName,
-                        "email": valueEmail
+                        "email": valueEmail,
+                        // new properties
+                        "dateShortRegister": dataToString,
+                        "dateShort": shortingDate,
+                        "lastModified":"Ninguno"
                     }));
                     await Register.ActionAsync(2000);
                     // fin de registro basico del usuario.

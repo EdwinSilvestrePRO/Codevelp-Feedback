@@ -199,11 +199,75 @@ window.handlerFunctions = function(EVENT){
         const $account = document.getElementById("optionAccount");
         $account.click();
     }
-    // Modificando para poder mejorar el flujo de salida
-    else if (EVENT.target.matches("#Idontnow")) {
-        let isExitForApp = window.confirm("¿Desea salir de FeedBack?");
-            if(isExitForApp) window.close();
+    else if (EVENT.target.matches("svg#accessConfigProfile") || EVENT.target.matches("svg#accessConfigProfile path")) {
+        // config profile: change name, change email or change thumbnails and data.
+        const InterfaceForConfig = new GraphyInterface(),
+        nodesHidden = document.getElementById("configAccount");
+
+        InterfaceForConfig
+        .interfaceForConfigProfile(nodesHidden, EVENT.target);
     }
+    else if (EVENT.target.matches("svg#discard-config") || EVENT.target.matches("svg#discard-config path")) {
+        // config profile: change name, change email or change thumbnails and data.
+        const InterfaceForConfig = new GraphyInterface(),
+        nodesHidden = null;
+        
+        
+        InterfaceForConfig
+        .interfaceForConfigProfile(nodesHidden, EVENT.target);
+
+        const viewExit = document.getElementById("viewRunnCongif"),
+        mess = ("Descartando configuraion");
+
+        viewExit.textContent = mess;
+
+        viewExit.classList.add("warn");
+        viewExit.classList.add("visible");
+
+        setTimeout(()=> {
+            viewExit.classList.remove("warn");
+            viewExit.classList.remove("visible");
+        }, 1200);
+    }
+    else if (EVENT.target.matches("svg#save-change") || EVENT.target.matches("svg#save-change path")) {
+        // config profile: change name, change email or change thumbnails and data.
+        const InterfaceForConfig = new GraphyInterface(),
+        nodesHidden = null,
+        $divConfig = document.querySelector("div.wconfigAccount"),
+        configProfile = new AppConfig("Guardando configuracion del perfil de usuario");
+
+        configProfile.changeConfigProfileForSave($divConfig, InterfaceForConfig.handlePropertiesForUser())
+        .then (data => {
+
+            const $account = document.getElementById("optionAccount");
+            $account.click();
+            
+            if(data)
+            InterfaceForConfig
+            .interfaceForConfigProfile(nodesHidden, EVENT.target);
+            
+        })
+        .catch(warn => (warn));
+        
+    }
+    else if (EVENT.target.matches("div.theAssemblage-thumbnails svg.left") || EVENT.target.matches("div.theAssemblage-thumbnails svg.left path")) {
+        // evitando la seleccion de los elementos
+        window.getSelection()?.removeAllRanges();
+        // Cambiar avatar en el boton izquierdo
+        const chThumbnails = new GraphyInterface();
+        chThumbnails
+        .changeThumbnails("left");
+    }
+    else if (EVENT.target.matches("div.theAssemblage-thumbnails svg.right") || EVENT.target.matches("div.theAssemblage-thumbnails svg.right path")) {
+        // evitando la seleccion de los elementos
+        window.getSelection()?.removeAllRanges();
+        
+        // Cambiar avatar en el boton derecho.
+        const chThumbnails = new GraphyInterface();
+        chThumbnails
+        .changeThumbnails("right");
+    }
+    else if(true);
 }
 
 // agregando el evento y el metodo la cual va a llamar...
@@ -224,3 +288,28 @@ document
 
 // Este es el gestor principal del evento click en la aplicacion.
 document.addEventListener("click", window.handlerFunctions);
+
+document.addEventListener("input", (EVENT)=> {
+     // Aqui se resuelve el problema de los errores en la consola.
+     if(EVENT.target == (document.body.parentElement)) return;
+     else;
+
+    if (EVENT.target.matches("input#description") || EVENT.target.matches("input#fill") || EVENT.target.matches("input#track") || EVENT.target.matches("select#font-family")) {
+        const refresh = new GraphyInterface();
+        refresh.handlePropertiesForUser();
+    }
+    else if (EVENT.target.matches("input#namesForChange")) {
+        const patternName = /^[a-zA-Z]{3,}\s[a-zA-Z]{3,}(\s[a-zA-Z]{3,})*$/;
+
+        if (!patternName.test(EVENT.target.value)) EVENT.target.classList.add("invalid");
+        else EVENT.target.classList.remove("invalid");
+
+    }
+    else if (EVENT.target.matches("input#emailForChange")) {
+        const patternEmail = /^[a-z-A-Z]{1}\w{3,}\@(gmail.com|hotmail.com|codevelp.com)(.[a-z-A-Z]{3,})*$/;
+        
+        if (!patternEmail.test(EVENT.target.value)) EVENT.target.classList.add("invalid");
+        else EVENT.target.classList.remove("invalid");
+
+    }
+});

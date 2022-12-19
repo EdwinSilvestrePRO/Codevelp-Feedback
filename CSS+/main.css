@@ -27,21 +27,11 @@ html::-webkit-scrollbar,
 html[data-start]::-webkit-scrollbar {
     display: none;
 }
-
-img#miniOfUser {
-    position: absolute;
-    right: 1px;
-    top: 1px;
-    border-radius: 50%;
-    z-index: 40;
-    cursor: pointer;
-    scale:1;
-    transition: 200ms scale ease;
-}
-img#miniOfUser:hover {
-    scale:0.9;
-}
-
+ * {
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
+    box-sizing: border-box;
+ }
 body, html {
     margin:0px;
     padding:0px;
@@ -49,16 +39,24 @@ body, html {
 }
 div.chConfig {
     position: fixed;
-    z-index: 44;
+    z-index: 55;
     bottom: 0px;
     left: 0px;
     width: calc(100vw - 8px);
     padding: 8px;
-    font: bolder 1.2em monospace;
+    font: bolder 1.3em monospace;
     background-color: #444;
     color: white;
     text-align: center;
     visibility: hidden;
+}
+div.chConfig.err {
+    background-color: red;
+    color: white;
+}
+div.chConfig.warn {
+    background-color: yellow;
+    color: red;
 }
 
 div.chConfig.visible {

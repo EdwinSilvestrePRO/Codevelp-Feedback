@@ -32,20 +32,31 @@
             --text-decoration-color-H: red;
             --font-text-family: normal;
             --text-align-H: center;
-            /* styles for texts */
+            /* styles for texts content*/
             --color-text-C: black;
             --background-text-C: yellow;
             --font-size-C: 1em;
             --font-style-C: normal;
             --font-family-C: "times new roman";
             --text-align-C: center;
-
+            
             /* styles for menu */
             --background-text-M: #8bff95;
             --font-size-M: 1em;
-
+            
+            /* styles for Account */
+            --test-color: #ff4646;
+            --border-radius: none;
+            --color-text-A: white;
+            --color-text-A2: yellow;
+            --background-text-A: gray;
+            --font-size-A: calc(1em + 20px);
+            --font-style-A: normal;
+            --font-family-A: monospace;
+            --text-align-A: center;
+            --font-size-A2: 1.2em;
         }
-    </style>
+        </style>
     <!-- estilos elegidos por el usuario -->
     <style id="post-newStyles"></style>
 
@@ -148,7 +159,99 @@
     </template>
 
     <template id="ACCOUNT">
-        <p>Cuenta de usuario</p>
+        <div class="userAccount">
+            <svg id="accessConfigProfile" width="20" height="20" style="transform:scale(1.5); display:block; background-color: var(--background-text-H); cursor: pointer;">
+                <path d="M5 9 l 5 -3 l -2 -4 a 6 5 1 0 1 5 7 l 4 6 l -5 3 l -4 -6 a 4.8 4.9 1 0 1 -5 -8z" stroke="black" fill="var(--color-text-H)" stroke-linejoin="miter" stroke-linecap="miter"></path>
+            </svg>
+            <figure>
+                <img id="thumbnails-user" alt="thumbnails of user">
+                <div class="email-user">email</div>
+                <figcaption id="names">Names</figcaption>
+            </figure>
+            <hr>
+            <pre class="info">
+                <!-- the inner HTML -->
+            </pre>
+        </div>
+           <!-- Plantilla para presentar opciones de configuracion del perfil de cuenta de usuario. -->
+        <template id="configAccount">
+
+            <div class="wconfigAccount">
+                <!-- Done -->
+                <div class="controls">
+                    <!-- 1, controles -->
+                    <svg id="discard-config" style="cursor: pointer;" width="20px" height="20px">
+                        <path fill="transparent" stroke="#ff4646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M 0 0 L 20 20Z M 0 20 L 20 0Z"></path>
+                    </svg>
+                    <svg id="save-change" width="20" height="20" style="cursor: pointer; background-color: transparent;">
+                        <path stroke="#00ff00" fill="transparent" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+                        d="M 2 4 L 6 18 L 18 2"></path>
+                    </svg>
+                </div>
+
+                <div class="theAssemblage-thumbnails">
+                    
+                    <svg class="left" width="36" height="36" style="cursor: pointer; background-color: rgba(255, 255, 255, 0.767);">
+                        <path stroke="transparent" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"
+                        d="M 34 2 L 2 18 L 34 34" fill="black">
+                    </path>
+                    </svg>
+                    
+                    <svg class="right" width="36" height="36" style="cursor: pointer; background-color: rgba(255, 255, 255, 0.767);">
+                        <path stroke="transparent" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"
+                        d="M 2 2 L 34 18 L 2 34Z" fill="black">
+                    </path>
+                </svg>
+                <svg class="collapce-allImages" width="36" height="36" style="cursor: pointer; background-color: rgba(255, 255, 255, 0.767);">
+                    <path stroke="black" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill="black"
+                    d="M 3.5 2 l 5 0 l 0 5 l -5 0Z m 8 0 l 5 0 l 0 5 l -5 0Z m 8 0 l 5 0 l 0 5 l -5 0Z  m 8 0 l 5 0 l 0 5 l -5 0Z
+                    M 3.5 15 l 5 0 l 0 5 l -5 0Z m 8 0 l 5 0 l 0 5 l -5 0Z m 8 0 l 5 0 l 0 5 l -5 0Z  m 8 0 l 5 0 l 0 5 l -5 0Z
+                    M 3.5 28 l 5 0 l 0 5 l -5 0Z m 8 0 l 5 0 l 0 5 l -5 0Z m 8 0 l 5 0 l 0 5 l -5 0Z  m 8 0 l 5 0 l 0 5 l -5 0Z"></path>
+                </svg>
+                <figure>
+                    <img width="300" height="280" alt="thumbnails of user" class="status" id="thumbnail-dynamic" data-imageactual="Idon'tnow">
+                    <figcaption> <input placeholder="Descripcion" type="text" id="description" value=""> </figcaption>
+                </figure>
+            </div>
+
+            <div class="properties">
+                <table>
+                    <caption>Propiedades del Avatar:</caption>
+                    <tbody>
+                        <tr>
+                            <th>Fondo</th>
+                            <th>Trazos</th>
+                            <th>tipo de Fuente</th>
+                        </tr>
+                        <tr>
+                            <td> <input type="color" id="fill"> </td>
+                            <td> <input type="color" id="track"> </td>
+                            <td>
+                                <select id="font-family">
+                                    <option value="serif">serif</option>
+                                    <option value="cowrier new">cowrier new</option>
+                                    <option value="fantasy">fantasy</option>
+                                    <option value="monospace">monospace</option>
+                                    <option value="normal">normal</option>
+                                    <option value="times new roman">times new roman</option>
+                                    <option value="sans-serif">sans-serif</option>
+                                    <option value="cursive">cursive</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <label for="namesForChange">Nombres:</label>
+                <input type="text" id="namesForChange" name="name" placeholder="Nombres" class="">
+                <label for="emailForChange">Correo electronico:</label>
+                <input type="email" id="emailForChange" name="email" class="" placeholder="codevelp@codevelp.com">
+
+            </div>
+            
+            </div>
+
+        </template>
     </template>
 
     <template id="SETTING">
@@ -183,8 +286,8 @@
 
     </template>
 
-    <!-- Capa para ver cambios de configuración -->
-    <div class="chConfig" id="viewRunnCongif">change config</div>
+    <!-- Capa para ver cambios de configuración (y errores por si es el caso)-->
+    <div class="chConfig" id="viewRunnCongif">change config or view Error</div>
     <!-- Carga de las aplicaciones de código ES+ Javascript establecido en tipo modulo para que
     se pueda llamar otros archivos javascript en app.js -->
     <script type="module" src="./app.js"></script>
