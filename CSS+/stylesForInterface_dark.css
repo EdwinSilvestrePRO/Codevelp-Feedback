@@ -270,8 +270,114 @@ body.dark div.wconfigAccount div.properties input[type="color"] {
     border: none;
     background-color: black;
 }
+body.dark div.image-selection-option {
+    background-color: rgba(105, 0, 105, 0.616);
+    min-width: 300px;
+    max-height: 90vh;
+    padding: 2px;
+    width: calc(100vw - 4);
+    position:fixed;
+    top: -94vh;
+    left: 0px;
+    right: auto;
+    bottom: auto;
+    z-index: 80;
+    transition: 400ms top linear;
+    
+}
+body.dark div.image-selection-option.moveForView {
+    top: 0px;
+}
+body.dark div.image-selection-option div.collection-images::-webkit-scrollbar,
+body.dark div.image-selection-option div.collection-images::-webkit-scrollbar-button,
+body.dark div.image-selection-option div.collection-images::-webkit-scrollbar-thumb,
+body.dark div.image-selection-option div.collection-images::-webkit-scrollbar-track {
+    appearance: none;
+}
+body.dark div.image-selection-option div.collection-images::-webkit-scrollbar {
+    width: 10px;
+    height: auto;
+}
+body.dark div.image-selection-option div.collection-images::-webkit-scrollbar-button {
+    display: none;
+}
+body.dark div.image-selection-option div.collection-images::-webkit-scrollbar-track {
+    width: 10px;
+    height: auto;
+}
+body.dark div.image-selection-option div.collection-images::-webkit-scrollbar-thumb {
+    width: 10px;
+    background-color: var(--barScroll-color);
+    border-radius: 5px;
+}
+
+body.dark div.image-selection-option div.collection-images {
+    z-index: 80;
+    background-color: transparent;
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 80vh;
+    width: 100vw;
+    text-align: center;
+}
+body.dark div.image-selection-option div.collection-images figure {
+    width: 300px;
+    background-color: black;
+    display: inline-block;
+    margin: 5px;
+}
+body.dark div.image-selection-option div.collection-images figure figcaption {
+    text-align: center;
+    font: bolder 1.8rem monospace;
+    color: white;
+}
+body.dark div.image-selection-option div.collection-images figure figcaption input[type="radio"],
+body.dark div.image-selection-option div.collection-images figure figcaption input[type="radio"] * {
+    appearance: none;
+}
+body.dark div.image-selection-option div.collection-images figure figcaption input[type="radio"] {
+    border-radius: 0px;
+    width: 28px;
+    height: 28px;
+    background-color: yellow;
+    cursor: pointer;
+}
+body.dark div.image-selection-option div.collection-images figure figcaption input[type="radio"]:checked {
+    clip-path: polygon(
+        13px 0px,
+        14px 16px,
+        28px 4px,
+        28px 14px,
+        9px 28px,
+        5px 0px
+        );
+}
+body.dark div.image-selection-option div.collection-images figure img {
+    width: 300px;
+    height: auto;
+}
+
+body.dark div.image-selection-option div.controls-management2 {
+    background-color: transparent;
+    padding-top: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch;
+    justify-content: space-around;
+    align-content: stretch;
+}
+body.dark div.image-selection-option div.controls-management2 svg {
+    transform: rotate(0deg) scale(1);
+    transition: 350ms transform linear;
+}
+body.dark div.image-selection-option div.controls-management2 svg:hover {
+    transform: rotate(5deg) scale(1.2);
+}
+
+/* codigo externo: (ultimo) */
+
 /*Para dispositivos pequeños es necesario 520px como maximo*/
-@media all and (max-width: 520px) {
+@media all and (max-width: 810px) {
     body.dark main#allContent {
         background-color: transparent;
         width:100vw;
@@ -498,9 +604,10 @@ body.dark div.wconfigAccount div.properties input[type="color"] {
     }
     body.dark main#allContent article#articleContent div.userAccount figure img {
         border-radius: var(--border-radius);
-        margin:0px 0px 0px 0px;
-        width:80%;
-        height:auto;
+        margin: 0px 0px 0px 0px;
+        width: 75%;
+        max-width: 350px;
+        height: auto;
     }
     body.dark main#allContent article#articleContent div.userAccount figure figcaption {
         text-align: center;
@@ -541,7 +648,7 @@ body.dark div.wconfigAccount div.properties input[type="color"] {
     }
 }
 
-@media all and (min-width:521px) {
+@media all and (min-width:811px) {
     body.dark main#allContent {
         background-color: red;
     }

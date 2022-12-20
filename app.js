@@ -267,7 +267,39 @@ window.handlerFunctions = function(EVENT){
         chThumbnails
         .changeThumbnails("right");
     }
-    else if(true);
+    else if (EVENT.target.matches("svg.collapce-allImages") || EVENT.target.matches("svg.collapce-allImages path")) {
+        const PresentImages = new GraphyInterface(),
+        $elementOfImages = document.getElementById("ACCOUNT")
+        .content
+        .querySelector("template#allThumbnails-of-user");
+        
+        PresentImages.setAllImages($elementOfImages, document.body, document.body.querySelector("img#thumbnail-dynamic"));
+    }
+    else if (EVENT.target.matches("div.controls-management2 svg#discard-imageSelected") || EVENT.target.matches("div.controls-management2 svg#discard-imageSelected path")) {
+        const PresentImages = new GraphyInterface(),
+        $elementOfImages = document.body.querySelector("div#image-selection-option");
+        if($elementOfImages)        
+        PresentImages.clearAllImages($elementOfImages, document.body);
+    }
+    else if (EVENT.target.matches("div.controls-management2 svg#saved-imageSelected") || EVENT.target.matches("div.controls-management2 svg#saved-imageSelected path")) {
+        const setImageSelected = new GraphyInterface(),
+        theImages = document.body.querySelector("div#image-selection-option");
+        let $inputs = Array.from( theImages.querySelectorAll("input") );
+        
+        let imageSelected = $inputs.find((el)=> el.checked == true);
+        
+        setImageSelected
+        
+        .changeThumbnails("set-url", imageSelected)
+        
+        .then(()=> {
+            const PresentImages = new GraphyInterface(),
+            $elementOfImages = document.body.querySelector("div#image-selection-option");
+            if($elementOfImages)        
+            PresentImages.clearAllImages($elementOfImages, document.body);
+        })
+        .catch (t=> (t));
+    }
 }
 
 // agregando el evento y el metodo la cual va a llamar...
@@ -289,6 +321,7 @@ document
 // Este es el gestor principal del evento click en la aplicacion.
 document.addEventListener("click", window.handlerFunctions);
 
+// Gestor principal del evento input.
 document.addEventListener("input", (EVENT)=> {
      // Aqui se resuelve el problema de los errores en la consola.
      if(EVENT.target == (document.body.parentElement)) return;

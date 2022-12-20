@@ -1916,6 +1916,16 @@ export default class FeedbackImage extends Register {
     
         return IMAGES[strings[indexOfActual]].call(this, Iam, fill, track, font);
     }
+    selecImageForThumbnails(typeImage) {
+        const IMAGES = this.allImages();
+        this.#actual.dataset.imageactual = typeImage.value;
+        const {Iam, fill, track, font} = this;
+
+        for(let key in IMAGES) {
+            if(typeImage.value == key)
+                return IMAGES[key].call(this, Iam, fill, track, font)
+        }
+    }
     static async setIcon() {
         const $linkIcon = document.getElementById("iconApp");
         $linkIcon.href = FeedbackImage.iconURL(false);

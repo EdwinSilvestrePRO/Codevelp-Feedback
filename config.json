@@ -7,6 +7,9 @@
         "theme": "light",
         "name": "user-name",
         "email": "user-email",
+        "lastModified": "Ninguno === Es por defecto dado que primeramente no ha hecho una modificacion en su cuenta de usuario.",
+        "dateShort": "dia/mes/ano === Indica la fecha del primer acceso a la cuenta de una forma corta.",
+        "dateShortRegister": "Indica la fecha de registro de la cuenta de una forma mas larga que dateShort.",
         "stylesofApp": {
             "position-MarkX": "the position for logo application on graphyc interface",
             "position-buttonY":"is position for menu button",
@@ -18,7 +21,15 @@
             "text-decoration-line-H": "none",
             "text-decoration-color-H": "red",
             "font-text-family": "normal",
-            "text-align-H": "center"
+            "text-align-H": "center",
+            
+            "media": {
+                "Iam": "Student === Es la propiedad pro defecto que es la descripcion",
+                "font": "normal === Es por defecto que lo tendra selecionado",
+                "image": "one === es el nombre de la imagen funcion para que se introdusca en el perfil de usuario",
+                "fill": "#ffffff == Es el color prodefecto del fondo de la imagen de perfil de usuario",
+                "stroke": "Es el color de los trazos que se utilizan para escribir la descripcion y tambien resaltar las caras de la imagen de perfil de usuario"
+            }
         }
     }
     }

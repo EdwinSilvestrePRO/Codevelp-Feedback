@@ -386,7 +386,7 @@ export default class GraphyInterface {
         }
     }
     // Agrego "asynchronous" para ejecutar acciones asíncronas.
-    async changeThumbnails(positionX) {
+    async changeThumbnails(positionX, typeImage) {
         const { parentElement } = document.querySelector("div.theAssemblage-thumbnails");
         if(positionX == "left") {
             // const { parentElement } = document.querySelector("div.theAssemblage-thumbnails");
@@ -422,8 +422,44 @@ export default class GraphyInterface {
                 
                 imageActual.classList.remove("hidden");
             }
+            
+        }
+        else if (positionX == "set-url" && typeImage) {
 
-        } else {
+            let Iam = parentElement.querySelector("input#description").value,
+            imageActual = parentElement.querySelector("img#thumbnail-dynamic"),
+            fill = parentElement.querySelector("input#fill").value,
+            track = parentElement.querySelector("input#track").value,
+            font = parentElement.querySelector("select#font-family").value;
+
+            const imageForChange = new FeedbackImage(document.createElement("canvas"), Iam, fill, track, font, imageActual);
+            
+            let result = imageForChange.selecImageForThumbnails(typeImage);
+            if(result.err) {
+                // mostrar error de cambios por 3 segundos y luego quitarlo.
+                const viewErr = document.getElementById("viewRunnCongif");
+                viewErr.textContent = result.err;
+        
+                viewErr.classList.add("err");
+                viewErr.classList.add("visible");
+        
+                await GraphyInterface.ActionAsync(3000);
+        
+                viewErr.classList.remove("err");
+                viewErr.classList.remove("visible");
+                
+            } else {
+                imageActual.classList.add("hidden");
+                
+                imageActual.src = result.url;
+                
+                await GraphyInterface.ActionAsync(100);
+                
+                imageActual.classList.remove("hidden");
+            }
+
+        }
+        else {
             // change thumbnails to right.
             let Iam = parentElement.querySelector("input#description").value,
             imageActual = parentElement.querySelector("img#thumbnail-dynamic"),
@@ -457,6 +493,50 @@ export default class GraphyInterface {
                 imageActual.classList.remove("hidden");
             }
         }
+    }
+    async setAllImages ($Template, boxForInsert, img) {
+        const $fragment = document.createDocumentFragment(),
+        { imageactual } = img.dataset,
+        instance = new FeedbackImage(),
+        IMAGES = instance.allImages();
+
+        
+        for (let key in IMAGES) {
+            let dataSource = IMAGES[key].call(instance);
+            
+            const $figure = document.createElement("figure");
+            $figure
+            .setAttribute("class", "image-o-option");
+            $figure.innerHTML = `
+            <img alt="the option for user" src="${dataSource.url}">
+            <figcaption> <label> <input type="radio" value="${key}" name="image"${(imageactual == key)? "checked": ""}> ${key} </label> </figcaption>
+            `;
+            $fragment
+            .appendChild($figure);
+        }
+
+        
+        let $nodesSet = document.importNode($Template.content, true);
+         $nodesSet
+        .querySelector("div.collection-images")
+        .appendChild($fragment);
+        
+        boxForInsert
+        .appendChild($nodesSet);
+        await GraphyInterface.ActionAsync(10);
+
+        let $domElement = boxForInsert.querySelector("div#image-selection-option");
+        $domElement
+        .classList
+        .add("moveForView");
+    }
+    async clearAllImages ($contentImages, BOX) {
+
+        $contentImages.classList.remove("moveForView");
+
+        await GraphyInterface.ActionAsync(1000);
+        
+        BOX.removeChild($contentImages);
     }
 }
 document
