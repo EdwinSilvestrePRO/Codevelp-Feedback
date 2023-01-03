@@ -94,6 +94,41 @@ export default class Register {
             name.classList.remove("invalid");
         }
     }
+    async testConnection (thisEvent) {
+        const $collapse = document.getElementById("collapse");
+        let draw = `
+        <svg width="40" height="40" style="background: transparent;">
+        <!-- no Wi-fi -->
+        <path stroke="white" stroke-width="2" fill="transparent" stroke-linecap="round" stroke-linejoin="round" 
+        d="M 15 30 l8 8 m -8 0 l 8 -8z"></path>
+
+        <path stroke="yellow" fill="transparent" stroke-linecap="round" stroke-width="1.6" stroke-linejoin="round"
+        d="
+        M 10 32 a 3.8 3 0 0 1 18 0
+        M 8 30 a 3.8 3 0 0 1 22 0
+        M 4 28 a 4 3 0 0 1 29 0
+        M 1 26 a 4 3 0 0 1 35 0
+        ">
+        <!-- M 10 32 a 2 3 0 0 1 18 0 -->
+    </path>
+    
+    </svg>
+        `;
+
+        thisEvent.preventDefault();
+
+        if(window.navigator.onLine) {
+            window.open("https://youtube.com/channel/UCDYYrr87_Kdnt5Dg1MaLFRQ");           
+            $collapse.click();
+        } else {
+            this.template.innerHTML = `Conectate a una red para acceder ${draw}`;
+            this.template.classList.add("err");
+            this.template.classList.add("visible");
+            await Register.ActionAsync(3000);
+            this.template.classList.remove("err");
+            this.template.classList.remove("visible");
+        }
+    }
 }
 
 document

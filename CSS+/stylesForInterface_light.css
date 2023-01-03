@@ -517,72 +517,78 @@ body.light div.image-selection-option div.controls-management2 svg:hover {
         opacity: 0;
     }
     body.light main#allContent section.menu nav {
-        padding: 1px;
+        padding: 2px;
         background-color: var(--background-text-M);
-        border: 1px solid transparent;
         margin:0px;
+        overflow-y: auto;
+        overflow-x:hidden;
+        height:70vh;
     }
-    body.light main#allContent section.menu nav ol.options::-webkit-scrollbar,
-    body.light main#allContent section.menu nav ol.options::-webkit-scrollbar-button,
-    body.light main#allContent section.menu nav ol.options::-webkit-scrollbar-thumb
+    body.light main#allContent section.menu nav::-webkit-scrollbar,
+    body.light main#allContent section.menu nav::-webkit-scrollbar-button,
+    body.light main#allContent section.menu nav::-webkit-scrollbar-thumb
     {
         appearance: none;
     }
-    body.light main#allContent section.menu nav ol.options::-webkit-scrollbar {
+    body.light main#allContent section.menu nav::-webkit-scrollbar {
         width: 12px;
         height: auto;
         background-color: transparent;
     }
-    body.light main#allContent section.menu nav ol.options::-webkit-scrollbar-button {
+    body.light main#allContent section.menu nav::-webkit-scrollbar-button {
         display: none;
     }
-    body.light main#allContent section.menu nav ol.options::-webkit-scrollbar-thumb {
+    body.light main#allContent section.menu nav::-webkit-scrollbar-thumb {
         width:12px;
         background-color: var(--barScroll-color);
         border-radius: 1em;
     }
     body.light main#allContent section.menu nav ol.options {
         list-style-type: none;
-        overflow-y: auto;
-        overflow-x:hidden;
         margin:0px;
         padding: 0px;
-        height:70vh;
-        
-        display:grid;
-        grid-template-columns: repeat(1, 100%);
-        grid-auto-flow: row dense;
-        grid-auto-rows: max-content;
-        column-gap:6px;
-        row-gap: 20px;
-        align-content: space-around;
-        justify-content: space-evenly;
-        justify-items: space-around;
-        justify-items: stretch;
     }
-    body.light main#allContent section.menu nav ol.options li.item a,
     body.light main#allContent section.menu nav ol.options li.item {
         background-color: var(--background-text-H);
         text-decoration: none;
         cursor:pointer;
-        margin:0px;
-        margin-left:2px;
-        margin-right:2px;
+        margin:35px auto;
+        min-height: 40px;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: baseline;
+        align-content: center;
+        justify-content: center;
         color: var(--color-text-H);
         font:bold var(--font-size-M) var(--font-text-family);
         font-style: var(--font-style-H);
         text-align: var(--text-align-H);
-        border-radius: 1em;
-        scale: 1;
-        transition: 300ms scale linear;
+        transform: scale(1);
+        transition: 300ms transform linear;
+    }
+    body.light main#allContent section.menu nav ol.options li.item a {
+        display: block;
+        text-decoration: none;
+        color: var(--color-text-H);
+        font:bold var(--font-size-M) var(--font-text-family);
+        font-style: var(--font-style-H);
+    }
+    body.light main#allContent section.menu nav ol.options li.item.plataform {
+        background-color: darkblue;
+        animation-name: plataform;
+        animation-duration: 20s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-delay: 1s;
     }
     body.light main#allContent section.menu nav ol.options li.item.actual {
-        scale: 1.36;
         color: var(--color-text-C);
+        transform: scale(1.36);
         background-color:var(--background-text-C);
     }
     body.light main#allContent section.menu nav ol.options li.item:hover {
-        scale: 1.3;
+        transform: scale(1.3);
         text-decoration-line:underline;
     }
     body.light main#allContent article#articleContent div.userAccount {

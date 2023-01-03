@@ -160,13 +160,20 @@ window.handlerFunctions = function(EVENT){
         chTheme.changeTheme(); // url for iconInterface or void.
     }
 
-    else if (EVENT.target.parentElement.matches("ol#options")) {
-        if(!("href" in EVENT.target)) {
+    else if (EVENT.target.parentElement.matches("ol#options") || EVENT.target.parentElement.matches("ol#options li")) {
+        if(!("href" in EVENT.target) && !EVENT.target.matches("li.plataform")) {
             let chOp = new MenuBar(document.getElementById("central-panel"), document.getElementById("allContent"), document.getElementById("articleContent"));
             chOp.selectOption(EVENT.target, EVENT.target.parentElement.querySelector("li.actual"));
 
             chOp.close(chOp.articleContent);
 
+        } else {
+            const ViewIn = document.getElementById("viewRunnCongif");
+            
+            const testConnect = new Register(ViewIn);
+
+            testConnect
+            .testConnection(EVENT);
         }
     }
     else if(EVENT.target.matches("#iconForApp")) {

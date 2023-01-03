@@ -87,3 +87,17 @@ div#key-config-profile {
     background-color: red;
     height:max-content;
 }
+
+@keyframes plataform {
+    0% {background-color: darkblue;}
+    10% {background-color: yellow;}
+    20% {background-color: orange;}
+    30% {background-color: cyan;}
+    40% {background-color: red;}
+    50% {background-color: green;}
+    60% {background-color: blue;}
+    70% {background-color: purple;}
+    80% {background-color: black;}
+    90% {background-color: brown;}
+    100% {background-color: lightblue;}
+}
