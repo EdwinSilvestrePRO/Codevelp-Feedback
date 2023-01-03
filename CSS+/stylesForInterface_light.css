@@ -590,7 +590,7 @@ body.light div.image-selection-option div.controls-management2 svg:hover {
         /* layer #1 */
         background-color: var(--background-text-A);
         color: var(--color-text-A);
-        padding:8px;
+        padding: 0px;
         margin: 0px;
         width: calc(100vw - 72px);
         text-align: left;

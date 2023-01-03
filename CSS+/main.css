@@ -83,3 +83,7 @@ div.profile {
 div.profile.visible {
     opacity: 1;
 }
+div#key-config-profile {
+    background-color: red;
+    height:max-content;
+}

@@ -588,7 +588,7 @@ body.dark div.image-selection-option div.controls-management2 svg:hover {
         /* layer #1 */
         background-color: var(--background-text-A);
         color: var(--color-text-A);
-        padding:8px;
+        padding:0px;
         text-align: left;
     }
     body.dark main#allContent article#articleContent div.userAccount figure {
